@@ -1,0 +1,7 @@
+---
+- name: ping cawj servers
+  hosts: webservers
+
+  tasks:
+  - name: Test Ping
+    ansible.builtin.ping:
