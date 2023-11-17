@@ -1,0 +1,12 @@
+# file: inventories/preprod/group_vars/cawjappservers.yml
+#
+# This file contains variables that apply to the PREPROD Tomcat server group
+#
+
+# Remote server connection
+ansible_user: ansiblead
+ansible_password: Ans1bl3!
+ansible_port: 5986
+ansible_connection: winrm
+ansible_winrm_transport: basic
+ansible_winrm_server_cert_validation: ignore
