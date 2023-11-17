@@ -1,7 +1,8 @@
----
-- name: ping cawj servers
-  hosts: webservers
-
+- name: Ping Tomcat Servers
+  hosts: windowsservers
   tasks:
-  - name: Test Ping
-    ansible.builtin.ping:
+    - name: Test cawj App Servers Connectivity
+      ansible.windows.win_ping:
+      register: ping_info
+    - debug: 
+        msg: "{{ping_info}}"
