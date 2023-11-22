@@ -1,8 +1,0 @@
-- name: Ping Tomcat Servers
-  hosts: windowsservers
-  tasks:
-    - name: Test cawj App Servers Connectivity
-      ansible.windows.win_ping:
-      register: ping_info
-    - debug: 
-        msg: "{{ping_info}}"
