@@ -1,0 +1,18 @@
+---
+# file: site_basic.yml
+# 
+# This playbook deploys, configures and updates the app server tier
+#
+
+- name:  Basic site.yml to call our first role
+  hosts: all 
+
+  roles:
+
+    # push any updates to the message of the day
+    # parameters:
+    #   system_manager - contact email listed in the motd
+    #   specifying a parameter here will override anything specified in the defaults
+
+  - role: ../roles/common/ping-all
+    system_manager: james.benedict@ssc-spc.gc.ca

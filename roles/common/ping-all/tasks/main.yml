@@ -1,0 +1,7 @@
+---
+
+- include_tasks: "ping-{{ ansible_os_family }}.yml"
+
+
+
+

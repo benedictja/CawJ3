@@ -1,0 +1,10 @@
+---
+#
+#  Call DNF package updater for all
+#
+
+- name: Upgrade all packages
+  become: true
+  ansible.builtin.dnf:
+    name: "*"       # * means everything
+    state: latest   # 

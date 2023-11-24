@@ -1,0 +1,12 @@
+---
+# file: os-patching.yml
+# 
+# This playbook patches the os to latest version
+#
+
+- name:  Patch os
+  hosts: all 
+
+  roles:
+  - role: ../roles/common/os-patching
+    

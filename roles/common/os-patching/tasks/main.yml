@@ -1,0 +1,6 @@
+---
+# file: tasks/main.yml
+#
+# Call appropriate update playbook based on os_family
+
+- include_tasks: "patch-os-{{ ansible_os_family }}.yml"
