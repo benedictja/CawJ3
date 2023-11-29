@@ -1,0 +1,12 @@
+---
+# file: site_basic.yml
+# 
+# This playbook deploys, configures and updates the app server tier
+#
+
+- name:  Calls a task/role to update the message of the day (motd) on Linux
+  hosts: all 
+
+  roles: 
+  - role: ../roles/common/motd
+    system_manager: james.benedict@ssc-spc.gc.ca

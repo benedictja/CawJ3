@@ -1,17 +1,10 @@
-My TODO List - Session 3 (Nov 22/2023)
-
-1. Show completed inventory
-2. Talk about variables
-    - all.yml
-    - group vars
-    - host vars
-3. show windows ping and variables needed
-4. use facts as variables to merge win/linux ping
+My TODO List - Session 4 (Nov 29/2023)
 
 Next Week
-1. write a playbook that updates the o/s and sets the motd
+1. Switch to admin account and run ping
+2. write a playbook for motd
     - use jinja templates
-2. Start work on LB
+3. Start work on LB
 
 
 

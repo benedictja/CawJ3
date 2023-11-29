@@ -1,0 +1,10 @@
+---
+# file: tasks/main.yml
+#
+- name: Copy file with owner and permissions
+  ansible.builtin.copy:
+    src: defaults/motd.txt
+    dest: /etc/motd
+    owner: root
+    group: root
+    mode: '0444'
