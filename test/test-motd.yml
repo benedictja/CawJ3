@@ -9,4 +9,4 @@
   become: true
   roles: 
   - role: ../roles/common/motd
-    system_manager: james.benedict@ssc-spc.gc.ca
+ 
