@@ -6,7 +6,7 @@
 
 - name:  Calls a task/role to update the message of the day (motd) on Linux
   hosts: all 
-
+  become: true
   roles: 
   - role: ../roles/common/motd
     system_manager: james.benedict@ssc-spc.gc.ca
