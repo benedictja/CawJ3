@@ -2,7 +2,7 @@
 # file: tasks/main.yml
 #
 - name: Copy motd file with owner and permissions
-  ansible.builtin.copy:
+  ansible.builtin.template:
     src: templates/motd.j2
     dest: /etc/motd
     owner: root
