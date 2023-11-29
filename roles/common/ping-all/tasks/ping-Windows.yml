@@ -2,4 +2,4 @@
 - name: Test cawj App Servers Connectivity
   ansible.windows.win_ping:
 - debug: 
-    msg: "{{ inventory_hostname }} - {{ ansible_os_family }}"
+    msg: "{{ inventory_hostname }} - {{ ansible_os_family }} "
