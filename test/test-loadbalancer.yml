@@ -1,0 +1,13 @@
+---
+# file: 
+# 
+#
+
+- name:  Calls a task/role to to install NGINX
+  hosts: cawjpazlb 
+  #become: true
+  roles: 
+  - role: ../roles/common/loadbalancer
+    
+
+ 

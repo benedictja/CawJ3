@@ -1,0 +1,17 @@
+---
+# file: common/loadbalancer/tasks/main.yml
+#
+# Installs NGNIX loadbalancer
+- name: Add epel-release repo
+  dnf:
+    name: epel-release
+    state: latest
+
+- name: Install nginx
+  dnf:
+    name: nginx
+    state: latest
+
+- name: Start NGiNX
+  service:
+    name: nginx
