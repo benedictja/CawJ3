@@ -4,6 +4,6 @@
 #   
 #   Description:
 #      
-This project contains the IaC portion of teh CawJ project.
+This project contains the IaC portion of the CawJ project.
 We may create separate projects for Operational Scripts and/or code deployments (wars, dockerfiles, etc)
 
