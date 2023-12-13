@@ -1,0 +1,13 @@
+---
+# file: 
+# 
+#
+
+- name:  Calls a task/role to to install apache httpd on the pax linux servers
+  hosts: webservers 
+  become: true
+  roles: 
+  - role: ../roles/paz/webserver-apache
+    
+
+ 
