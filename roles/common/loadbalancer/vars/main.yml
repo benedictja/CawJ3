@@ -1,0 +1,18 @@
+---
+#
+# specify variables for template
+#
+
+# port http is running on
+#
+lb_target_port: 80
+
+# list of proxy hosts to balance
+lb_target_list: 
+  - cawjpazproxy1
+  - cawjpazproxy2
+
+lb_zone: paz
+
+lb_listen_location: /cawj3/
+lb_proxy_target: "http://backends/{{ lb_listen_location }}"
