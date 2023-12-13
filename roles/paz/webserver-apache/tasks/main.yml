@@ -23,7 +23,7 @@
   ansible.builtin.copy:
     dest: /var/www/html/index.html
     content: |
-      Custom Web Page    
+      "{{ inventory_hostname }}"   
 
 #
 # need to do the usual linux admin settings
