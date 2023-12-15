@@ -5,6 +5,7 @@
 
 # port http is running on
 #
+# simple change
 lb_target_port: 80
 
 # list of proxy hosts to balance
