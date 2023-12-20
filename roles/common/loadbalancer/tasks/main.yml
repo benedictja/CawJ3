@@ -41,3 +41,9 @@
     group: root
     mode: '0644'
 
+- name: Ensure that nginx is restarted for changes to apply
+  service:
+    name: nginx
+    state: restarted
+  tags: always restart
+
