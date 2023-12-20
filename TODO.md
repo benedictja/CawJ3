@@ -9,7 +9,13 @@ Start work on LB
 - find an example
 - implement first with hardcoding (paz lb)
 
+Next Week
+- setup apps
+- push config (custom)
+- push config template
+- add index page - could do this
 
+Add SuSe.
 
 
 
