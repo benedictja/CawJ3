@@ -18,4 +18,4 @@ lb_zone: paz
 lb_listen_port: 80
 lb_listen_location: cawj3/
 #lb_proxy_target: "http://backends/{{ lb_listen_location }}"
-lb_proxy_target: "http://backends/
+lb_proxy_target: "http://backends/"
