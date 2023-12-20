@@ -1,0 +1,21 @@
+---
+#
+# specify variables for template
+#
+
+# port http is running on
+#
+# simple change
+lb_target_port: 80
+
+# list of proxy hosts to balance
+lb_target_list: 
+  - cawjappsA1
+  - cawjappsA1
+
+lb_zone: apps
+
+lb_listen_port: 80
+lb_listen_location: /appA/
+#lb_proxy_target: "http://backends/{{ lb_listen_location }}"
+lb_proxy_target: "http://backends/"
