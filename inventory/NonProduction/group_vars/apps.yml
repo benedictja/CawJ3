@@ -11,7 +11,7 @@ lb_target_port: 80
 # list of proxy hosts to balance
 lb_target_list: 
   - cawjappsA1
-  - cawjappsA1
+  - cawjappsA2
 
 lb_zone: apps
 
