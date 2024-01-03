@@ -12,6 +12,14 @@
     name: nginx
     state: latest
 
+- name: Copy ngnix.conf template to server and replace with vars
+  ansible.builtin.template:
+    src: templates/nginx.conf.j2
+    dest: /etc/nginx/nginx.conf
+    owner: root
+    group: root
+    mode: '0644'
+
 - name: open firewall
   ansible.posix.firewalld:
     service: http
@@ -33,17 +41,4 @@
     state: true
     persistent: true
 
-- name: Copy ngnix.conf template to server and replace with vars
-  ansible.builtin.template:
-    src: templates/nginx.conf.j2
-    dest: /etc/nginx/nginx.conf
-    owner: root
-    group: root
-    mode: '0644'
-
-- name: Ensure that nginx is restarted for changes to apply
-  service:
-    name: nginx
-    state: restarted
-  tags: always restart
 
