@@ -12,7 +12,7 @@ lb_target_port: 80
 lb_target_list: 
   - cawjpazproxy1
   - cawjpazproxy2
-  
+  - blahblah
     
 lb_zone: paz
 
