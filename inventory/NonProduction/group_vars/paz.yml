@@ -11,9 +11,8 @@ lb_target_port: 80
 # list of proxy hosts to balance
 lb_target_list: 
   - cawjpazproxy1
-  - cawjpazproxy2 
-  
-
+  - cawjpazproxy2
+    
 lb_zone: paz
 
 lb_listen_port: 80
