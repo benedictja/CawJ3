@@ -11,7 +11,7 @@
 
 - name: Install JAVA
   ansible.builtin.dnf:
-    name: java-latest-openjdk
+    name: java-latest-openjdk.x86_64
     state: latest
 
 - name: Create a Tomcat Directory
