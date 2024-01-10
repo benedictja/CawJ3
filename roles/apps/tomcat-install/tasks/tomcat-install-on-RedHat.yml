@@ -1,11 +1,6 @@
 ---
 # need to deal with become
 
-- name: Update the System Packages
-  ansible.builtin.dnf:
-    upgrade: yes
-    update_cache: yes
-
 - name: Create a Tomcat User
   user:
     name: tomcat
