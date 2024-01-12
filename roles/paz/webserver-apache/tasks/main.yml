@@ -13,7 +13,7 @@
 - name: httpd installed
   ansible.builtin.dnf:
     name: httpd
-    state: latest
+    state: latest  
 
 
 #
