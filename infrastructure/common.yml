@@ -1,0 +1,25 @@
+---
+# file: common.yml
+#
+# Calls all common task/roles for infrastructure
+#
+
+- name: Running common tasks
+  hosts: all
+
+  roles:  
+    # 
+    # ping all servers to make sure they're reachable before we start
+    #
+    - role: ../roles/common/ping-all
+
+    # 
+    # make sure that the o/s is patched up to the latest version
+    #
+    - role: ../roles/common/os-patching
+
+    #
+    # send out MotD update as needed
+    #
+    - role: ../roles/common/motd
+    

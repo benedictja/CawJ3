@@ -1,21 +1,65 @@
-My TODO List - Session 4 (Nov 29/2023)
-Session 5 - Dec 6, 2023
-Start work on LB
+My TODO List - January 12, 2024
+- almost complete basic IaC (lb, apache, tomcat)
+- Wed - Tomcat on Windows
+++ site.yml (wed) 
+++ operationalization
+- Typical Operational Tasks
+    Assume:
+        - build book and/or IaC (Infrastructure as Code) exists and was run
+        - web application
+    Day-to-days
+        - deploy war/content - configuration? 
+        - start/stop entire application
+        - start/stop tiers (web tier, app tier, db tier)
+        - start/stop services
+        - gather logs
+        - password/certificate management (apache)
+        - Configuration?
+        - Validation (config, etc, LCAMs compliance)
 
-1. Create Branch - we want to create a project branch so that we only integrate our finished product
-    created new branch
-2. Layout our plans 
-- create role template and test
-- find an example
-- implement first with hardcoding (paz lb)
 
-Next Week
-- setup apps
-- push config (custom)
-- push config template
-- add index page - could do this
 
-Add SuSe.
+Things to Automate (LCAMS or RACI)
+1) Automate setup/build - IaC Phase - this what we're doing now
+    - build and deploy servers, network, vms, etc
+    - cloud vs containers vs VMs vs Physical vs pre-existing
+    - integratw w CI/CD & Pipelines (Modern fullstack DevOps)
+2) Load build/deployments
+    - specific configs and application code/content
+3) Operationalization - in own branch
+    - simulates us vs partner
+
+
+
+January 19, 2024 - Session 8.5 unplugged
+1) Structure project into
+    - operations
+    - infrastructure
+    - build/deploy
+2) write wrapper for infra
+3) discuss ops tasks, maybe stub a few out
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

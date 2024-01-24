@@ -1,0 +1,18 @@
+---
+# file: apps.yml
+#
+# Calls all common task/roles for the apps layer, mainly java/tomcat install
+#
+# call deploy as well?
+# TODO: add LB later
+#
+
+- name: Installing Apps Tier
+  hosts: appservers
+
+  roles:
+    #
+    # Install tomcat on app servers, windows or linux
+    #
+  - role: ../roles/apps/tomcat-install
+
