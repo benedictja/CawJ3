@@ -1,0 +1,8 @@
+---
+# file: tasks/main.yml
+#
+# This is where the role's tasks go
+
+- name: Example from an Ansible Playbook
+  ansible.builtin.debug:
+    msg: "{{ inventory_hostname }} - {{ ansible_os_family }} should say Windows"
