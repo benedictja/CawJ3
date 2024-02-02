@@ -1,0 +1,42 @@
+---
+# https://download.java.net/java/GA/jdk21.0.2/f2283984656d49d69e91c558476027ac/13/GPL/openjdk-21.0.2_windows-x64_bin.zip
+
+- name: Install Java JDK on Windows
+  hosts: cawjopsAPI1
+
+  vars:
+    jdk_url: "https://download.java.net/java/GA/jdk21.0.2/f2283984656d49d69e91c558476027ac/13/GPL/openjdk-21.0.2_windows-x64_bin.zip"
+    jdk_ver: jdk-21.0.2 
+    jdk_install_dir: "D:\\JDK"
+
+  tasks:
+    - name: Copy JDK installer to remote machine
+      win_get_url:
+        url: "{{ jdk_url }}"        
+        dest: "{{ ansible_env.TEMP }}\\openjdk-{{ jdk_ver }}.zip"
+      
+    
+    - name: Unzip JDK
+      win_unzip:
+        src: "{{ ansible_env.TEMP }}\\openjdk-{{ jdk_ver }}.zip"
+        dest: "{{ jdk_install_dir }}"
+        creates: "{{ ansible_env.TEMP }}\\openjdk-{{ jdk_ver }}"
+  
+    - name: Add JAVA_HOME environment variable
+      win_environment:
+        state: present
+        name: JAVA_HOME
+        value: "{{ jdk_install_dir }}\\{{ jdk_ver }}"
+        level: user
+
+    - name: Add JRE_HOME environment variable
+      win_environment:
+        state: present
+        name: JRE_HOME
+        value: "{{ jdk_install_dir }}\\{{ jdk_ver }}"
+        level: user
+
+    - name: Add Java to PATH
+      win_path:
+        elements:
+          - "{{ jdk_install_dir }}\\{{ jdk_ver }}\\bin"

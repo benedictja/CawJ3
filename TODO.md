@@ -31,13 +31,12 @@ Things to Automate (LCAMS or RACI)
 
 
 
-January 19, 2024 - Session 8.5 unplugged
-1) Structure project into
-    - operations
-    - infrastructure
-    - build/deploy
-2) write wrapper for infra
-3) discuss ops tasks, maybe stub a few out
+Groundhog Day!
+1) finish tomcat installer
+    - get conditional to work for both linux/windows
+    - fix service installer
+2) Revisit LB and Proxies to make sure they can forward to both apps
+3) find a war for the app servers
 
 
 

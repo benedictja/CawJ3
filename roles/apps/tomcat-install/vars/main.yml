@@ -1,9 +1,12 @@
-JAVA_HOME: /usr/lib/jvm/jre
-tomcat_archive_url: https://archive.apache.org/dist/tomcat/tomcat-{{ tomcat_v_num }}/v{{ tomcat_ver }}/bin/apache-tomcat-{{ tomcat_ver }}.tar.gz
-tomcat_archive_dest: /tmp/apache-tomcat-{{ tomcat_ver }}.tar.gz
-tomcat_ver: 9.0.64                          # Tomcat version to install
+#
+# TODO: merge Linux vars and refactor as needed
+#
+tomcat_archive_url: https://archive.apache.org/dist/tomcat/tomcat-{{ tomcat_v_num }}/v{{ tomcat_ver }}/bin/apache-tomcat-{{ tomcat_ver }}-windows-x64.zip
+tomcat_ver: 9.0.85                         # Tomcat version to install
 tomcat_v_num: 9
-ui_manager_user: manager                    # User who can access the UI manager section only
-ui_manager_pass: Str0ngManagerP@ssw3rd      # UI manager user password
-ui_admin_username: admin                    # User who can access bpth manager and admin UI sections
-ui_admin_pass: Str0ngAdminP@ssw3rd       # UI admin password
+#tomcat_version: "10.1.18"
+tomcat_install_dir: "D:\\Tomcat"
+tomcat_service_name: "CawJTC9"
+jdk_url: "https://download.java.net/java/GA/jdk21.0.2/f2283984656d49d69e91c558476027ac/13/GPL/openjdk-21.0.2_windows-x64_bin.zip"
+jdk_ver: jdk-21.0.2 
+jdk_install_dir: "D:\\JDK"

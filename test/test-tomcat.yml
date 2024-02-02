@@ -5,8 +5,7 @@
 #
 
 - name:  tbd
-  hosts: cawjappsA1 cawjappsA2
-  become: true
+  hosts: appservers
   roles:    
   - role: ../roles/apps/tomcat-install
     

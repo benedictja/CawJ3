@@ -1,0 +1,45 @@
+---
+# https://dlcdn.apache.org/tomcat/tomcat-10/v10.1.18/bin/apache-tomcat-10.1.18-windows-x64.zip
+# https://archive.apache.org/dist/tomcat/tomcat-9/v9.0.85/bin/apache-tomcat-9.0.85-windows-x64.zip
+- name: Install Tomcat on Windows
+  hosts: cawjappsB1
+
+  vars:
+    tomcat_archive_url: https://archive.apache.org/dist/tomcat/tomcat-{{ tomcat_v_num }}/v{{ tomcat_ver }}/bin/apache-tomcat-{{ tomcat_ver }}-windows-x64.zip
+    tomcat_ver: 9.0.85                         # Tomcat version to install
+    tomcat_v_num: 9
+    #tomcat_version: "10.1.18"
+    tomcat_install_dir: "D:\\Tomcat"
+    tomcat_service_name: "CawJTC9"
+
+  tasks:
+    - name: Download Apache Tomcat binary
+      win_get_url:
+        url: "{{tomcat_archive_url}}"
+        dest: "{{ ansible_env.TEMP }}\\apache-tomcat-{{ tomcat_ver }}-windows-x64.zip"
+    - name: debug
+      debug: 
+        msg: "{{tomcat_archive_url}}"
+
+    - name: Unzip Apache Tomcat
+      win_unzip:
+        src: "{{ ansible_env.TEMP }}\\apache-tomcat-{{ tomcat_ver }}-windows-x64.zip"
+        dest: "{{ tomcat_install_dir }}"
+      args:
+        creates: "{{ tomcat_install_dir }}\\apache-tomcat-{{ tomcat_ver }}"
+
+    - name: Set Tomcat environment variables
+      ansible.builtin.win_environment:
+        name: CATALINA_HOME
+        value: "{{ tomcat_install_dir }}\\apache-tomcat-{{ tomcat_ver }}"
+        state: present
+        level: user
+
+    - name: Install tomcat as a windows service
+      win_command: "service.bat install {{ tomcat_service_name }}"
+      args:
+        chdir: "{{ tomcat_install_dir }}\\apache-tomcat-{{ tomcat_ver }}\\bin"
+       
+    #- name: 
+    # - name: Start Tomcat # note: win_shell doesn't complete
+    #   win_command: "{{ tomcat_install_dir }}\\apache-tomcat-{{ tomcat_ver }}\\bin\\startup.bat"
