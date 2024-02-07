@@ -7,12 +7,13 @@
 # TODO: add LB later
 #
 
-- name: Installing Apps Tier
-  hosts: appservers
+- name: Installing Apps Tier (Linux)
+  hosts: cawjappsA1 cawjappsA2
+  become: yes
 
   roles:
     #
     # Install tomcat on app servers, windows or linux
     #
-  - role: ../roles/apps/tomcat-install
+  - role: ../../roles/apps/tomcat-install-linux
 

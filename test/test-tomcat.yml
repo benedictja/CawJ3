@@ -4,9 +4,10 @@
 # This playbook deploys, configures and updates the app server tier
 #
 
-- name:  tbd
-  hosts: appservers
-  roles:    
-  - role: ../roles/apps/tomcat-install
-    
+- name: Import apps zone (tomcat windows install only)
+  ansible.builtin.import_playbook: ../infrastructure/apps/tomcat-windows.yml
+
+
+- name: Import apps zone (tomcat linux install only)
+  ansible.builtin.import_playbook: ../infrastructure/apps/tomcat-linux.yml
     
