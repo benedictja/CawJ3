@@ -30,14 +30,15 @@ Things to Automate (LCAMS or RACI)
     - simulates us vs partner
 
 
+Feb 7, 2024
 
-Groundhog Day!
-1) finish tomcat installer
-    - get conditional to work for both linux/windows
-    - fix service installer
-2) Revisit LB and Proxies to make sure they can forward to both apps
-3) find a war for the app servers
+1) get tomcat install working for windows/linux
+    - conditional works, but need to set vars according to platform
+    - deal with become
 
+2) apps loadbalancer needs a different template
+    - since we have only ONE backend (the apaches) in PAZ, but TWO backends in APPS (appA and appB)
+    - 
 
 
 
