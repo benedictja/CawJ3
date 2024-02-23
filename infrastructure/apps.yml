@@ -1,0 +1,13 @@
+---
+# file: site_basic.yml
+# 
+# This playbook deploys, configures and updates the app server tier
+#
+
+- name: Import apps zone (tomcat windows install only)
+  ansible.builtin.import_playbook: ./apps/tomcat-windows.yml
+
+
+- name: Import apps zone (tomcat linux install only)
+  ansible.builtin.import_playbook: ./apps/tomcat-linux.yml
+    

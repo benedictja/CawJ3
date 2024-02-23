@@ -35,6 +35,10 @@ Feb 7, 2024
 1) get tomcat install working for windows/linux
     - conditional works, but need to set vars according to platform
     - deal with become
+    We refactored the tomcat install into two separate roles, based on install tech.
+    work is completed, will merge into repo
+    - merged on 2024/02/08
+        benedictja_windows_tomcat & benedictja_tomcat can be deleted
 
 2) apps loadbalancer needs a different template
     - since we have only ONE backend (the apaches) in PAZ, but TWO backends in APPS (appA and appB)

@@ -14,7 +14,7 @@
 
 - name: Copy ngnix.conf template to server and replace with vars
   ansible.builtin.template:
-    src: "templates/{{lb_zone}}nginx.conf.j2"
+    src: "{{ngnix_conf_template}}"
     dest: /etc/nginx/nginx.conf
     owner: root
     group: root
