@@ -4,11 +4,11 @@
 # Main launch point for env install/setup
 #
 
-# - name: Import common playbook
-#   ansible.builtin.import_playbook: infrastructure/common.yml
+- name: Import common playbook
+  ansible.builtin.import_playbook: infrastructure/common.yml
 
 #- name: Import Operations Zone
  # ansible.builtin.import_playbook: infrastructure/ops.yml
 
-- name: Import apps zone (tomcat install only)
-  ansible.builtin.import_playbook: infrastructure/apps.yml
+# - name: Import apps zone (tomcat install only)
+#   ansible.builtin.import_playbook: infrastructure/apps.yml

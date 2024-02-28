@@ -1,0 +1,44 @@
+---
+# file: common/loadbalancer/tasks/main.yml
+#
+# Installs NGNIX loadbalancer
+- name: Add epel-release repo
+  dnf:
+    name: epel-release
+    state: installed
+
+- name: Install nginx
+  dnf:
+    name: nginx
+    state: latest
+
+- name: Copy ngnix.conf template to server and replace with vars
+  ansible.builtin.template:
+    src: templates/nginx.conf.j2
+    dest: /etc/nginx/nginx.conf
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: open firewall
+  ansible.posix.firewalld:
+    service: http
+    state: enabled
+    immediate: true
+    permanent: true
+  tags: open firewall
+
+- name: nginx is running and enabled
+  service:
+    name: nginx
+    state: started
+    enabled: yes
+  tags: start service and enable
+
+- name: Set httpd_can_network_connect flag on and keep it persistent across reboots
+  ansible.posix.seboolean:
+    name: httpd_can_network_connect
+    state: true
+    persistent: true
+
+

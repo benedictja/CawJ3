@@ -1,0 +1,3 @@
+---
+# Set the default jinja config template here
+ngnix_conf_template: "templates/nginx.conf.j2"
