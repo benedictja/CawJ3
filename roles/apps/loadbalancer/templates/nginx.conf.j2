@@ -23,13 +23,13 @@ events {
  
 http {
 
-    upstream {{backendsA}} {
+    upstream backendsA {
         {% for server in lb_target_listA %}
         server {{ server }}:{{ lb_target_portA }};
         {% endfor %}
     }
 
-     upstream {{backendsB}} {
+     upstream backendsB {
         {% for server in lb_target_listB %}
         server {{ server }}:{{ lb_target_portB }};
         {% endfor %}
