@@ -4,10 +4,13 @@
 # This playbook deploys, configures and updates the app server tier
 #
 
-- name: Import apps zone (tomcat windows install only)
+- name: Tomcat Install (windows install only)
   ansible.builtin.import_playbook: ./apps/tomcat-windows.yml
 
 
-- name: Import apps zone (tomcat linux install only)
+- name: Tomcat Install (linux install only)
   ansible.builtin.import_playbook: ./apps/tomcat-linux.yml
+
+- role: ../../roles/apps/loadbalancer
+  
     

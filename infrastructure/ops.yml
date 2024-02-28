@@ -4,6 +4,6 @@
 # Calls all common task/roles for infrastructure
 #
 
-- name: Setup ops infrastructure
+
 
 # empty, until we add ops stuff
