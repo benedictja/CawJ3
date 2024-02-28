@@ -21,5 +21,5 @@
     #
     # send out MotD update as needed
     #
-    - role: ../roles/common/motd
+    # - role: ../roles/common/motd
     
