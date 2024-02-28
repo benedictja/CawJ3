@@ -16,7 +16,7 @@
     # 
     # make sure that the o/s is patched up to the latest version
     #
-    - role: ../roles/common/os-patching
+    #- role: ../roles/common/os-patching
 
     #
     # send out MotD update as needed

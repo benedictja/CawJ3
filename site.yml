@@ -10,5 +10,8 @@
 - name: Import Operations Zone
   ansible.builtin.import_playbook: infrastructure/ops.yml
 
-- name: Import apps zone (tomcat install only)
+- name: Import apps zone 
   ansible.builtin.import_playbook: infrastructure/apps.yml
+
+- name: Import paz zone 
+  ansible.builtin.import_playbook: infrastructure/paz.yml

@@ -12,6 +12,5 @@
 
   - role: ../roles/paz/webserver-apache
 
-  - role: ../roles/common/loadbalancer
-    ngnix_conf_template: "templates/nginx.conf.j2"
+  - role: ../roles/paz/loadbalancer
     message: "Install paz loadbalancer"
