@@ -7,10 +7,15 @@
 - name: Tomcat Install (windows install only)
   ansible.builtin.import_playbook: ./apps/tomcat-windows.yml
 
-
 - name: Tomcat Install (linux install only)
   ansible.builtin.import_playbook: ./apps/tomcat-linux.yml
 
-- role: ../../roles/apps/loadbalancer
+  roles:  
+    # 
+    # ping all servers to make sure they're reachable before we start
+    #
+    - role: ../../roles/apps/loadbalancer
+
+
   
     
