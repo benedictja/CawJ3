@@ -9,5 +9,5 @@
   hosts: webservers
 
   roles: 
-  - role: ../roles/paz/loadbalancer
+  - role: ../../roles/paz/loadbalancer
     message: "Install paz loadbalancer"
