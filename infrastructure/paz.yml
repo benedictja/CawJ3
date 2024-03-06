@@ -5,10 +5,10 @@
 #
 
 - name: Apache Proxy Install
-  ansible.builtin.import_playbook: ./paz/tomcat-windows.yml
+  ansible.builtin.import_playbook: ./paz/apache-linux.yml
 
 - name: Load Balancer Install (paz install only)
-  ansible.builtin.import_playbook: ./paz/loadbalancer-apps.yml
+  ansible.builtin.import_playbook: ./paz/loadbalancer-paz.yml
 
 
   
