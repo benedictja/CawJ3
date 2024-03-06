@@ -21,6 +21,7 @@
 # create index file using copy
 #
 - name: custom index.html
+  become: yes # TODO: shouldn't need root, recode privs
   ansible.builtin.copy:
     dest: /var/www/html/index.html
     content: |
