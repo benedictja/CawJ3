@@ -1,16 +1,15 @@
 ---
-# file: paz.yml
+# file: site_basic.yml
+# 
+# This playbook deploys, configures and updates the app server tier
 #
-# Installs the PAZ zone proxy server
-# LB at later date
-#
 
-- name: Running common tasks
-  hosts: webservers
+- name: Apache Proxy Install
+  ansible.builtin.import_playbook: ./paz/tomcat-windows.yml
 
-  roles: 
+- name: Load Balancer Install (paz install only)
+  ansible.builtin.import_playbook: ./paz/loadbalancer-apps.yml
 
-  - role: ../roles/paz/webserver-apache
 
-  - role: ../roles/paz/loadbalancer
-    message: "Install paz loadbalancer"
+  
+    

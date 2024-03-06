@@ -1,0 +1,13 @@
+---
+# file: paz.yml
+#
+# Installs the PAZ zone proxy server
+# LB at later date
+#
+
+- name: Running common tasks
+  hosts: webservers
+
+  roles: 
+  - role: ../roles/paz/loadbalancer
+    message: "Install paz loadbalancer"
