@@ -1,7 +1,7 @@
-- name: Add EPEL repository
-  dnf:
-    name: epel-release
-    state: latest
+# - name: Add EPEL repository
+#   dnf:
+#     name: epel-release
+#     state: latest
 
 - name: Install basic packages
   package:
