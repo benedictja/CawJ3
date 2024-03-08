@@ -6,8 +6,9 @@
 #
 
 - name: Running common tasks
+  become: yes
   hosts: webservers
 
   roles: 
-  - role: ../../roles/paz/loadbalancer
-    message: "Install paz loadbalancer"
+  - role: ../../roles/paz/webserver-apache
+    message: "Install paz apache proxies"
