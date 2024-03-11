@@ -28,6 +28,18 @@
       "{{ inventory_hostname }}"   
 
 #
+# copy proxy.conf
+#
+- name: custom index.html
+  become: yes # TODO: shouldn't need root, recode privs
+  ansible.builtin.template:
+    src: templates/proxy.conf.j2
+    dest: /etc/httpd/conf.d/proxy.conf
+    owner: root
+    group: root
+    mode: '0644'  
+
+#
 # need to do the usual linux admin settings
 #      
 - name: httpd service enabled
