@@ -39,6 +39,16 @@
     group: root
     mode: '0644'  
 
+
+#
+# Update selinux so that httpd can forward requests
+#
+- name: Set httpd_can_network_connect flag on and keep it persistent across reboots
+  ansible.posix.seboolean:
+    name: httpd_can_network_connect
+    state: true
+    persistent: true
+    
 #
 # need to do the usual linux admin settings
 #      
