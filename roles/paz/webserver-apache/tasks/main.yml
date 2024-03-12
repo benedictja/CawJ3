@@ -30,7 +30,7 @@
 #
 # copy proxy.conf
 #
-- name: custom index.html
+- name: proxy.conf deploy
   become: yes # TODO: shouldn't need root, recode privs
   ansible.builtin.template:
     src: templates/proxy.conf.j2
@@ -48,7 +48,7 @@
     name: httpd_can_network_connect
     state: true
     persistent: true
-    
+
 #
 # need to do the usual linux admin settings
 #      
