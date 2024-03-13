@@ -13,14 +13,18 @@
   #
   # Shutdown the load balancer
   #
-  - name: nginx is running and enabled
+  - name: Stop PAZ Load Balancer (nginx)
     become: yes
-    service:
+    ansible.builtin.service:
       name: nginx
       state: stopped
 
   #
   # Shut down the proxy servers
   #
-
+  - name: Stop PAZ Proxy Services (apache)
+    become: yes
+    ansible.builtin.service:
+      name: httpd
+      state: stopped
 
