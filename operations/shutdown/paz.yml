@@ -1,0 +1,26 @@
+---
+# file: paz.yml
+#
+# Shuts down all the services in the PAZ
+# 
+#
+
+- name: Stop all PAZ Services
+  hosts: paz
+
+  tasks:
+
+  #
+  # Shutdown the load balancer
+  #
+  - name: nginx is running and enabled
+    become: yes
+    service:
+      name: nginx
+      state: stopped
+
+  #
+  # Shut down the proxy servers
+  #
+
+

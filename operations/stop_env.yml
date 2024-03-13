@@ -1,0 +1,51 @@
+---
+# file: stop_env.yml
+# 
+# This playnook ensures that the environment is stopped.
+# It will check to see if a component is running, and stop if necessary.
+#
+
+- name:  Stop Environment
+
+#
+# Step 1 -
+#
+# Put up maintenance pages, close FW, etc
+#
+
+# nothing here ... yet
+
+#
+# Step 2 -
+#
+# Shut down all apps and services in the PAZ
+# (e.g. loadbalancer, proxy, etc)
+# 
+
+- name: Shut down paz zone 
+  ansible.builtin.import_playbook: shutdown/paz.yml
+
+#
+# Step 3 -
+#
+# Shut down APP Zone
+# (e.g. websphere, tomcat, etc)
+#
+
+- name: Shut down apps zone 
+  ansible.builtin.import_playbook: shutdown/apps.yml
+
+#
+# Step 4 -
+#
+# Finally, we shut down all common/dependent services and apps
+# (e.g. databases, API Servers, etc)
+
+# - name: Stop common tasks
+#   ansible.builtin.import_playbook: shutdown/common.yml
+
+# currently, we have nothing here that needs to be shut down
+
+#
+# At this point we should be fully shut down
+#

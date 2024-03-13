@@ -12,8 +12,10 @@
 #
 # Execute all common tasks
 #
-- name: Start common tasks
-  ansible.builtin.import_playbook: startup/common.yml
+# - name: Start common tasks
+#   ansible.builtin.import_playbook: startup/common.yml
+#
+# We currently have no common tasks that need to be started.
 
 #
 # Step 2 -
@@ -43,6 +45,9 @@
 - name: Import paz zone 
   ansible.builtin.import_playbook: startup/paz.yml
 
+#
+# By now, env should be fully started
+#
 
 #
 # Step 5 -
