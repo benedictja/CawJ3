@@ -3,16 +3,19 @@
 #
 # Installs NGNIX loadbalancer
 - name: Add epel-release repo
+  become: yes
   dnf:
     name: epel-release
     state: installed
 
 - name: Install nginx
+  become: yes
   dnf:
     name: nginx
     state: latest
 
 - name: Copy ngnix.conf template to server and replace with vars
+  become: yes
   ansible.builtin.template:
     src: templates/nginx.conf.j2
     dest: /etc/nginx/nginx.conf
@@ -21,6 +24,7 @@
     mode: '0644'
 
 - name: open firewall
+  become: yes
   ansible.posix.firewalld:
     service: http
     state: enabled
@@ -29,6 +33,7 @@
   tags: open firewall
 
 - name: nginx is running and enabled
+  become: yes
   service:
     name: nginx
     state: started
@@ -36,6 +41,7 @@
   tags: start service and enable
 
 - name: Set httpd_can_network_connect flag on and keep it persistent across reboots
+  become: yes
   ansible.posix.seboolean:
     name: httpd_can_network_connect
     state: true

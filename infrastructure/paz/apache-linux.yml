@@ -1,0 +1,14 @@
+---
+# file: paz.yml
+#
+# Installs the PAZ zone proxy server
+# LB at later date
+#
+
+- name: Running common tasks
+  become: yes
+  hosts: webservers
+
+  roles: 
+  - role: ../../roles/paz/webserver-apache
+    message: "Install paz apache proxies"

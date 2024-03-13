@@ -11,6 +11,7 @@
 # 2) if not, it will install it
 # 3) will check to see if it is the latest version and update if not
 - name: httpd installed
+  become: yes
   ansible.builtin.dnf:
     name: httpd
     state: latest  
@@ -20,15 +21,39 @@
 # create index file using copy
 #
 - name: custom index.html
+  become: yes # TODO: shouldn't need root, recode privs
   ansible.builtin.copy:
     dest: /var/www/html/index.html
     content: |
       "{{ inventory_hostname }}"   
 
 #
+# copy proxy.conf
+#
+- name: proxy.conf deploy
+  become: yes # TODO: shouldn't need root, recode privs
+  ansible.builtin.template:
+    src: templates/proxy.conf.j2
+    dest: /etc/httpd/conf.d/proxy.conf
+    owner: root
+    group: root
+    mode: '0644'  
+
+
+#
+# Update selinux so that httpd can forward requests
+#
+- name: Set httpd_can_network_connect flag on and keep it persistent across reboots
+  ansible.posix.seboolean:
+    name: httpd_can_network_connect
+    state: true
+    persistent: true
+
+#
 # need to do the usual linux admin settings
 #      
 - name: httpd service enabled
+  become: yes
   ansible.builtin.service:
     name: httpd
     enabled: true
@@ -37,6 +62,7 @@
 # make sure the firewall is open
 #
 - name: open firewall
+  become: yes
   ansible.posix.firewalld:
     service: http
     state: enabled

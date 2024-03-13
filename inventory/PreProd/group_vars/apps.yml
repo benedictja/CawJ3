@@ -1,0 +1,29 @@
+---
+#
+# specify variables for template
+#
+lb_backend_nameA: backendsA
+lb_backend_nameB: backendsB
+
+# port http is running on
+#
+lb_target_portA: 8080
+lb_target_portB: 8080
+
+# list of proxy hosts to balance
+lb_target_listA: 
+  - cawjappsA1
+  - cawjappsA2
+
+lb_target_listB: 
+  - cawjappsB1
+  - cawjappsB2
+
+lb_zone: apps
+
+lb_listen_port: 80
+lb_listen_locationA: /appA/
+lb_listen_locationB: /appB/
+#lb_proxy_target: "http://backends/{{ lb_listen_location }}"
+lb_proxy_targetA: "http://backendsA/"
+lb_proxy_targetB: "http://backendsB/"

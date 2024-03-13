@@ -1,0 +1,20 @@
+---
+# file: loadbalancer-paz.yml
+#
+# Calls all common task/roles for the apps layer, mainly java/tomcat install
+#
+# call deploy as well?
+# TODO: add LB later
+#
+
+- name: Installing PAZ Tier Loadbalancer
+  hosts: cawjpazlb
+  become: yes
+
+  roles:
+    #
+    # Install tomcat on app servers, windows or linux
+    #
+  - role: ../../roles/paz/loadbalancer
+    message: "Install PAZ Loadbalancer"
+
