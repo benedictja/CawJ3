@@ -23,6 +23,12 @@
       state: stopped
     when: "'httpd.service' in services"
 
+  - name: Stop service
+    systemd:
+      name: nginx
+      state: stopped
+    when: "'nginx.service' in services"
+
   # #
   # # Shutdown the load balancer
   # #
