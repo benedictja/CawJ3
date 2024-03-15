@@ -10,29 +10,21 @@
 
   tasks:
   
-  - name: "disable unused services"
-    service: name={{item}} state=stopped
-    register: command_result
-    failed_when: "unused_disable|failed and ('find' not in unused_disable.msg and 'found' not in unused_disable.msg)"
-    with_items:
-      - httpd
-      - nginx
+  #
+  # Shutdown the load balancer
+  #
+  - name: Stop PAZ Load Balancer (nginx)
+    become: yes
+    ansible.builtin.service:
+      name: nginx
+      state: stopped
 
-  # #
-  # # Shutdown the load balancer
-  # #
-  # - name: Stop PAZ Load Balancer (nginx)
-  #   become: yes
-  #   ansible.builtin.service:
-  #     name: nginx
-  #     state: stopped
-
-  # #
-  # # Shut down the proxy servers
-  # #
-  # - name: Stop PAZ Proxy Services (apache)
-  #   become: yes
-  #   ansible.builtin.service:
-  #     name: httpd
-  #     state: stopped
+  #
+  # Shut down the proxy servers
+  #
+  - name: Stop PAZ Proxy Services (apache)
+    become: yes
+    ansible.builtin.service:
+      name: httpd
+      state: stopped
 
