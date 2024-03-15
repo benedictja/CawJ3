@@ -9,22 +9,35 @@
   hosts: paz
 
   tasks:
-  
-  #
-  # Shutdown the load balancer
-  #
-  - name: Stop PAZ Load Balancer (nginx)
-    become: yes
-    ansible.builtin.service:
-      name: nginx
-      state: stopped
 
-  #
-  # Shut down the proxy servers
-  #
-  - name: Stop PAZ Proxy Services (apache)
-    become: yes
-    ansible.builtin.service:
+  - name: Populate service facts
+    ansible.builtin.service_facts:
+
+  - name: Print service facts
+    ansible.builtin.debug:
+      var: ansible_facts.services
+
+  - name: Stop service
+    systemd:
       name: httpd
       state: stopped
+    when: "'httpd.service' in services"
+
+  # #
+  # # Shutdown the load balancer
+  # #
+  # - name: Stop PAZ Load Balancer (nginx)
+  #   become: yes
+  #   ansible.builtin.service:
+  #     name: nginx
+  #     state: stopped
+
+  # #
+  # # Shut down the proxy servers
+  # #
+  # - name: Stop PAZ Proxy Services (apache)
+  #   become: yes
+  #   ansible.builtin.service:
+  #     name: httpd
+  #     state: stopped
 

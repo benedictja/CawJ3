@@ -1,0 +1,22 @@
+---
+# file: site_basic.yml
+# 
+# This playbook deploys, configures and updates the app server tier
+#
+
+- name:  Basic site.yml to call our first role
+  hosts: cawjhub 
+
+  tasks: 
+  - name: Populate service facts
+    ansible.builtin.service_facts:
+
+  - name: Print service facts
+    ansible.builtin.debug:
+      var: ansible_facts.services
+
+  - name: Stop service
+    systemd:
+      name: trash
+      state: stopped
+    when: "'<service_name_here>.service' in services"
