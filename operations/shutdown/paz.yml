@@ -11,7 +11,7 @@
   tasks:
   
   - name: "disable unused services"
-    service: name={{item}} state=stopped enabled=no
+    service: name={{item}} state=stopped
     register: command_result
     failed_when: "unused_disable|failed and ('find' not in unused_disable.msg and 'found' not in unused_disable.msg)"
     with_items:
