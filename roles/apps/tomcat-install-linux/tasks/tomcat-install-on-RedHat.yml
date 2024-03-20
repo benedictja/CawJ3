@@ -8,6 +8,11 @@
     name: epel-release
     state: latest
 
+- name: Install epel packages
+  dnf:
+    name: epel-next-release
+    state: latest
+
 - name: Install basic packages
   dnf:
     name: ['firewalld','vim','bash-completion','tmux','tree','htop','wget','unzip','curl','git']
