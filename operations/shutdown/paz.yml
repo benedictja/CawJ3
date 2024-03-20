@@ -13,9 +13,9 @@
   - name: Populate service facts
     ansible.builtin.service_facts:
 
-  - name: Print service facts
-    ansible.builtin.debug:
-      var: ansible_facts.services
+  # - name: Print service facts
+  #   ansible.builtin.debug:
+  #     var: ansible_facts.services
 
   - name: Stop service
     systemd:
