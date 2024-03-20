@@ -27,4 +27,5 @@
     systemd:
       name: tomcat
       state: stopped
-    when: "'tomcat.service' in services"
+    when: ansible_facts['os_family'] == 'ReHat'
+    # when: "'tomcat.service' in services"
