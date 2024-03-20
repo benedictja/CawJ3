@@ -5,7 +5,7 @@
 
 - name: Install epel packages
   dnf:
-    name: epel
+    name: [ 'epel-release', 'epel-next-release']
     state: latest
 
 - name: Install basic packages
