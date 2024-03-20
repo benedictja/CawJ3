@@ -18,7 +18,7 @@
 #
 # Step 2 -
 #
-# Shut down all apps and services in the PAZ
+# Shut down all applications and services in the PAZ
 # (e.g. loadbalancer, proxy, etc)
 # 
 
