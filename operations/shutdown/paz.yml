@@ -25,6 +25,7 @@
     when: "'httpd.service' in services"
 
   - name: Stop Load Balancer Service (nginx)
+    become: true
     systemd:
       name: nginx
       state: stopped
