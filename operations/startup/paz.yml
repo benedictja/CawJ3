@@ -1,0 +1,35 @@
+---
+# file: startup/paz.yml
+#
+# Starts all the services in the PAZ
+# 
+
+- name: Start all PAZ Services
+  hosts: paz
+
+  tasks:
+
+  - name: Populate service facts
+    ansible.builtin.service_facts:
+
+  # - name: Print service facts
+  #   ansible.builtin.debug:
+  #     var: ansible_facts.services
+
+#
+# Start servics from the most inside-out
+#
+
+  - name: Start Web Proxy Service (apache httpd)
+    become: true
+    systemd:
+      name: httpd
+      state: started
+    when: "'httpd.service' in services"
+
+  - name: Start Load Balancer Service (nginx)
+    become: true
+    systemd:
+      name: nginx
+      state: started
+    when: "'nginx.service' in services"

@@ -16,6 +16,15 @@
   - name: Print service facts
     ansible.builtin.debug:
       var: ansible_facts.services
+#
+# Stop services from the most outside-in
+#
+  - name: Stop Load Balancer Service (nginx)
+    become: true
+    systemd:
+      name: nginx
+      state: stopped
+    when: "'nginx.service' in services"
 
   - name: Stop Web Proxy Service (apache httpd)
     become: true
@@ -23,13 +32,6 @@
       name: httpd
       state: stopped
     when: "'httpd.service' in services"
-
-  - name: Stop Load Balancer Service (nginx)
-    become: true
-    systemd:
-      name: nginx
-      state: stopped
-    when: "'nginx.service' in services"
 
   # #
   # # Shutdown the load balancer

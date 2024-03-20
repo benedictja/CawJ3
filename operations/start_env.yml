@@ -5,7 +5,7 @@
 # It will check to see if a component is running, and star it ONLY if required.
 #
 
-- name:  Start Environment
+# - name:  Start Environment
 
 #
 # Step 1 -
@@ -33,16 +33,16 @@
 # Execute all common tasks
 #
 
-- name: Import apps zone 
-  ansible.builtin.import_playbook: startup/apps.yml
+# - name: Import apps zone 
+#   ansible.builtin.import_playbook: startup/apps.yml
 
 #
 # Step 4 -
 #
-# Execute all common tasks
+# Startup all applications and services in the PAZ
 #
 
-- name: Import paz zone 
+- name: Start PAZ Zone
   ansible.builtin.import_playbook: startup/paz.yml
 
 #
