@@ -17,13 +17,14 @@
   #   ansible.builtin.debug:
   #     var: ansible_facts.services
 
-  - name: Stop service
+  - name: Stop Web Proxy Service (apache httpd)
+    become: true
     systemd:
       name: httpd
       state: stopped
     when: "'httpd.service' in services"
 
-  - name: Stop service
+  - name: Stop Load Balancer Service (nginx)
     systemd:
       name: nginx
       state: stopped
