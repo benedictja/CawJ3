@@ -3,9 +3,14 @@
 #     name: epel-release
 #     state: latest
 
+- name: Install epel packages
+  dnf:
+    name: ['epel', 'epel-next']
+    state: latest
+
 - name: Install basic packages
   dnf:
-    name: ['firewalld','vim','bash-completion','tmux','tree','wget','unzip','curl','git']
+    name: ['firewalld','vim','bash-completion','tmux','tree','htop','wget','unzip','curl','git']
     state: latest
 
 - name: Install Java 8 CentOS
