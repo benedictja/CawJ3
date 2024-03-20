@@ -5,7 +5,7 @@
 # It will check to see if a component is running, and stop if necessary.
 #
 
-- name:  Stop Environment
+# - name:  Stop Environment
 
 #
 # Step 1 -
