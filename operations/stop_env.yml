@@ -32,8 +32,8 @@
 # (e.g. websphere, tomcat, etc)
 #
 
-- name: Shut down apps zone 
-  ansible.builtin.import_playbook: "shutdown/apps-{{ ansible_os_family }}.yml"
+- name: Shut down Linux applications in the apps zone 
+  ansible.builtin.import_playbook: "shutdown/apps-RedHat.yml"
   # ansible.builtin.import_playbook: shutdown/apps.yml
 
 #
