@@ -1,0 +1,66 @@
+all:
+  hosts:
+    172.16.23.152:    # ansible control node
+  children:
+    windowsservers: 
+      hosts: 
+        172.16.23.145:
+        172.16.23.146:
+        # cawjopsDB1:
+        # cawjopsAPI1:    
+        
+    linuxservers:
+      hosts: 
+        172.16.23.138:
+        172.16.23.139:
+        172.16.23.152:
+        172.16.23.144:
+        172.16.23.143:
+        172.16.23.137:
+        172.16.23.142:
+
+    loadbalancers:
+      hosts:
+        172.16.23.137:
+        172.16.23.142:
+        
+paz:                # PAZ Zone
+  hosts: 
+    172.16.23.137:      # paz load balancer
+  children:
+    webservers:
+      hosts:
+        172.16.23.138:
+        172.16.23.139:
+        
+apps:               # App Zone
+  hosts:
+    172.16.23.142:
+  children:
+    appservers:
+      hosts:
+        172.16.23.144:
+        172.16.23.143:
+        172.16.23.145:
+        172.16.23.146:
+    appA:
+      hosts:
+        172.16.23.144:
+        172.16.23.143:
+    appB:
+      hosts:
+        172.16.23.145:
+        172.16.23.146:
+ops:
+  children:
+    dbservers:
+      hosts:
+        #cawjopsDB1:
+    apiservers:
+      hosts:  
+        #cawjopsAPI1:
+    devops:
+      hosts:  
+        172.16.23.152:
+
+
