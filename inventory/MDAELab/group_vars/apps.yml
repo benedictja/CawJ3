@@ -14,6 +14,7 @@ lb_target_portB: 8080
 lb_target_listA: 
   - cawjappsA1
   - cawjappsA2
+  - cawjappsA3
 
 lb_target_listB: 
   - cawjappsB1
