@@ -15,4 +15,5 @@ host_ips:
   - 172.16.23.148   gcmsmel1
   - 172.16.23.149   gcmswin1
   - 172.16.23.152   cawjhub
+  - 172.16.23.156   cawjappA3
   
