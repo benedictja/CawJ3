@@ -8,7 +8,7 @@
 #
 
 - name: Installing Apps Tier (Linux)
-  hosts: cawjappsA1 cawjappsA2
+  hosts: appA
   become: yes
 
   roles:
