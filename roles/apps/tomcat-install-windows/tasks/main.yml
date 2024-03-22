@@ -7,11 +7,11 @@
     url: "{{ jdk_url }}"        
     dest: "{{ ansible_env.TEMP }}\\openjdk-{{ jdk_ver }}.zip"
 
-- name: Unzip JDK
-  win_unzip:
-    src: "{{ ansible_env.TEMP }}\\openjdk-{{ jdk_ver }}.zip"
-    dest: "{{ jdk_install_dir }}"
-    creates: "{{ ansible_env.TEMP }}\\openjdk-{{ jdk_ver }}"
+# - name: Unzip JDK
+#   win_unzip:
+#     src: "{{ ansible_env.TEMP }}\\openjdk-{{ jdk_ver }}.zip"
+#     dest: "{{ jdk_install_dir }}"
+#     creates: "{{ ansible_env.TEMP }}\\openjdk-{{ jdk_ver }}"
 
 - name: Add JAVA_HOME environment variable
   win_environment:
