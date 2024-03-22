@@ -1,0 +1,7 @@
+---
+- name:  Push /etc/hosts on linux
+  hosts: linuxservers
+  become: yes
+  roles:
+  # push the host maps to the lb
+  - role: ../roles/common/push-host-map

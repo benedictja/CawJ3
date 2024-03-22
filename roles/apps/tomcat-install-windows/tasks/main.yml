@@ -7,11 +7,11 @@
     url: "{{ jdk_url }}"        
     dest: "{{ ansible_env.TEMP }}\\openjdk-{{ jdk_ver }}.zip"
 
-- name: Unzip JDK
-  win_unzip:
-    src: "{{ ansible_env.TEMP }}\\openjdk-{{ jdk_ver }}.zip"
-    dest: "{{ jdk_install_dir }}"
-    creates: "{{ ansible_env.TEMP }}\\openjdk-{{ jdk_ver }}"
+# - name: Unzip JDK
+#   win_unzip:
+#     src: "{{ ansible_env.TEMP }}\\openjdk-{{ jdk_ver }}.zip"
+#     dest: "{{ jdk_install_dir }}"
+#     creates: "{{ ansible_env.TEMP }}\\openjdk-{{ jdk_ver }}"
 
 - name: Add JAVA_HOME environment variable
   win_environment:
@@ -59,10 +59,10 @@
 
 # TODO: make sure that playbook doesn't crash if service exists
 #
-# - name: Install tomcat as a windows service
-#   win_command: "service.bat install {{ tomcat_service_name }}"
-#   args:
-#     chdir: "{{ tomcat_install_dir }}\\apache-tomcat-{{ tomcat_ver }}\\bin"
+- name: Install tomcat as a windows service
+  win_command: "service.bat install {{ tomcat_service_name }}"
+  args:
+    chdir: "{{ tomcat_install_dir }}\\apache-tomcat-{{ tomcat_ver }}\\bin"
 
 - name: Firewall rule to allow HTTP on 8080
   community.windows.win_firewall_rule:

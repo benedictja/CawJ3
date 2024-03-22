@@ -4,8 +4,8 @@
 # This playbook deploys, configures and updates the app server tier
 #
 
-- name: Tomcat Install (windows install only)
-  ansible.builtin.import_playbook: ./apps/tomcat-windows.yml
+# - name: Tomcat Install (windows install only)
+#   ansible.builtin.import_playbook: ./apps/tomcat-windows.yml
 
 - name: Tomcat Install (linux install only)
   ansible.builtin.import_playbook: ./apps/tomcat-linux.yml
