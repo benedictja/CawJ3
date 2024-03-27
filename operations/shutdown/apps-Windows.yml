@@ -1,1 +1,10 @@
 ---
+# file: shutdown/apps-Windows.yml
+#
+# Shuts down all the Windows services in the APPS Zone
+#
+
+- name: Stop tomcat windows service
+  ansible.windows.win_service:
+    name: "CawJTC9"
+    state: stopped
