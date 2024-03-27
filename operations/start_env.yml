@@ -20,7 +20,7 @@
 #
 # Step 2 -
 #
-# Execute all common tasks
+# Execute all ops tasks
 #
 
 # - name: Import Operations Zone
@@ -30,11 +30,11 @@
 #
 # Step 3 -
 #
-# Execute all common tasks
+# Execute all apps tasks
 #
 
-# - name: Import apps zone 
-#   ansible.builtin.import_playbook: startup/apps.yml
+- name: Import apps zone 
+  ansible.builtin.import_playbook: startup/apps.yml
 
 #
 # Step 4 -

@@ -1,0 +1,10 @@
+---
+# file: startup/apps-Windows.yml
+#
+# Starts all the Windows services in the APPS Zone
+#
+
+- name: Start tomcat windows service
+  ansible.windows.win_service:
+    name: "CawJTC9"
+    state: started
