@@ -7,4 +7,5 @@
 - name: Stop all  APPS Services
   hosts: apps
 
-- include_tasks: "apps-{{ ansible_os_family }}.yml"
+  tasks:
+    - include_tasks: "apps-{{ ansible_os_family }}.yml"
