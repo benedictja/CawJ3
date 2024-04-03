@@ -24,7 +24,7 @@ events {
 http {
 
     upstream backendsA {
-        {% for server in lb_target_listA %}
+        {% for server in groups['appA'] %}
         server {{ server }}:{{ lb_target_portA }};
         {% endfor %}
     }
