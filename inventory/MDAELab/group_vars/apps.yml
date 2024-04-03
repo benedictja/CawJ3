@@ -11,7 +11,7 @@ lb_target_portA: 8080
 lb_target_portB: 8080
 
 # list of proxy hosts to balance
-lb_target_listA: 
+lb_target_listA: # == appA
   - cawjappsA1
   - cawjappsA2
   - cawjappsA3
