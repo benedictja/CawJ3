@@ -1,10 +1,10 @@
 ---
-# file: shutdown/apps-Red-Hat.yml
+# file: startup/apps.yml
 #
-# Shuts down all the Linux services in the APPS Zone
+# Start up all apps and services in the APPS zone
 # 
 
-- name: Stop all  APPS Services
+- name: Start all  APPS Services
   hosts: apps
 
   tasks:
