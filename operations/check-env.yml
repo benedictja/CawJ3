@@ -17,6 +17,14 @@
   ansible.builtin.import_playbook: checks/check-is-app-working.yml
   tags: connectivity
 
-- name: "#3 Check to see that the Each Proxy"
+- name: "#3 Check to see that the paz lb can contact each proxy"
   ansible.builtin.import_playbook: checks/check-pazlb-proxy.yml
+  tags: connectivity
+
+- name: "#4 Check to see that the each proxy can reach each app"
+  ansible.builtin.import_playbook: checks/check-proxy-apptier.yml
+  tags: connectivity
+
+- name: "#5 Check to see that the the apps lb can contact each app server"
+  ansible.builtin.import_playbook: checks/check-appsbl-apps.yml
   tags: connectivity

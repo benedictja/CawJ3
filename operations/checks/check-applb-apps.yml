@@ -1,0 +1,21 @@
+# file: ./operations/checks/check-pazlb-proxy.yml
+# 
+#
+# Does url checks for connectivity from the pazlb to all of the proxy servers
+# 
+
+- name:  "Check#X - PAZ LB ==> Proxy"
+  hosts: appservers # we only want to check LB->Proxy
+
+  tasks:
+  
+  - name: APPS LB == App A Servers
+    ansible.builtin.uri:
+      url: http://{{ ansible_hostname }}/
+    when: "'appA' in group_names"
+
+  - name: APPS LB == App B Servers
+    ansible.builtin.uri:
+      url: http://{{ ansible_hostname }}/
+    when: "'appB' in group_names"
+
