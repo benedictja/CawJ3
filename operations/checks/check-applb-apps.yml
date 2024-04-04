@@ -6,6 +6,7 @@
 
 - name:  "Check#X - PAZ LB ==> Proxy"
   hosts:  cawjappslb # we only want to check LB->Proxy
+  
 
   tasks:
   
