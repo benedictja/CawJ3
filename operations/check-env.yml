@@ -13,7 +13,10 @@
 - name: "#1 Do ansible 'ping' to test connectivity"
   ansible.builtin.import_playbook: checks/ping.yml
 
-- name: "#2 Do ansible 'ping' to test connectivity"
+- name: "#2 Check to see that the app(s) are reachable via http"
   ansible.builtin.import_playbook: checks/check-is-app-working.yml
   tags: connectivity
 
+- name: "#3 Check to see that the Each Proxy"
+  ansible.builtin.import_playbook: checks/check-pazlb-proxy.yml
+  tags: connectivity

@@ -8,7 +8,7 @@
 # but it does NOT tell us how many servers are actually working
 
 - name:  "Check#2 - URL Connectivity"
-  hosts: cawjpazlb 
+  hosts: cawjhub 
 
   tasks:
   
