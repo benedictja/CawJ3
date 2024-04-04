@@ -5,7 +5,7 @@
 # hard-coding the MDAE Lab for now
 
 - name:  "Check#2 - Ingres URL check"
-  hosts: cawjhub # we conly care that it can be accessed from outside 
+  hosts: all # we conly care that it can be accessed from outside 
 
   tasks:
 
