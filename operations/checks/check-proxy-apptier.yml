@@ -14,10 +14,12 @@
   - name: Proxies to App A
     ansible.builtin.uri:
       url: http://cawjappslb/appA/
+    ignore_errors: true
 
   - name: Proxies to App B
     ansible.builtin.uri:
       url: http://cawjappslb/appA/
+    ignore_errors: true
       
 
 

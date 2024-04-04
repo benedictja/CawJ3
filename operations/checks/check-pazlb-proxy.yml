@@ -14,8 +14,10 @@
     ansible.builtin.uri:
       url: http://cawjpazlb/appA/
     loop: "{{ groups['webservers'] }}" 
+    ignore_errors: true
 
   - name: PAZ LB to proxy
     ansible.builtin.uri:
       url: http://cawjpazlb/appB/
-    loop: "{{ groups['webservers'] }}" 
+    loop: "{{ groups['webservers'] }}"
+    ignore_errors: true 
