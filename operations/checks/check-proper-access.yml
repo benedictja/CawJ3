@@ -1,25 +1,58 @@
 # file: ./operations/checks/check-proper-access.yml
 # 
-# Checks both http://cawjpazlb/appA/ and http://cawjpazlb/appB/
 #
-# hard-coding the MDAE Lab for now
+# Does url checks for connectivity between tiers
 
-- name:  "Check#2 - Ingres URL check"
-  hosts: all # we conly care that it can be accessed from outside 
+- name:  "Check#2 - URL Connectivity"
+  hosts: all 
 
   tasks:
 
-  - name: Check PAZLB ==> AppA
+#
+# First, lets check to see that our apps are up
+#
+# this check verifies that we can connect to at least one back-end for each app
+# it does NOT indicate all servers are working or not
+#
+
+  - name: App Alive - App A
     ansible.builtin.uri:
       url: http://cawjpazlb/appA/
     when: "'ingress' in group_names"
 
-  - name: Check PAZLB ==> AppB
+  - name: App Alive - App B
     ansible.builtin.uri:
       url: http://cawjpazlb/appB/ 
     when: "'ingress' in group_names"
 
+#
+# Now that we've verified that our apps are up (or down)
+# we can do a full healthcheck, we'll do it outside-in
+#
+
+#
+# FW->LB
+# We don't have an FW, so this will be a direct check on our LB
+#
+
+  - name: Check PAZLB is accessible
+    ansible.builtin.uri:
+      url: http://cawjpazlb/
+    when: "'ingress' in group_names"
+
+#
+# LB->Proxy
+#
   - name: Check PAZLB ==> Proxy
+    ansible.builtin.uri:
+      url: http://{{ ansible_hostname }}/
+    when: "'webservers' in group_names"
+
+#
+# Proxy->APPLB
+# 
+
+  - name: Check Proxy ==> APPSLB
     ansible.builtin.uri:
       url: http://{{ ansible_hostname }}/
     when: "'webservers' in group_names"

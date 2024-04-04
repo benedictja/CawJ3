@@ -1,0 +1,22 @@
+# file: ./operations/checks/check-is-app-working.yml
+# 
+#
+# Does url checks for connectivity from our "external" point (cawjhub)
+# to the published application.
+# 
+# This indicates that both applications should be working (e.g. an end user browser gets a page)
+# but it does NOT tell us how many servers are actually working
+
+- name:  "Check#2 - URL Connectivity"
+  hosts: cawjpazlb 
+
+  tasks:
+  
+  - name: App Alive - App A
+    ansible.builtin.uri:
+      url: http://cawjpazlb/appA/
+
+  - name: App Alive - App B
+    ansible.builtin.uri:
+      url: http://cawjpazlb/appB/ 
+    when: "'ingress' in group_names"
