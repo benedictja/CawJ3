@@ -11,8 +11,9 @@
 
   - name: Check connection to App A
     ansible.builtin.uri:
-      url: http://172.16.23.137/appA/
+      url: http://cawjpazlb/appA/
+    when: "'cawjpazlb' in group_names"
 
   - name: Check connection to App B
     ansible.builtin.uri:
-      url: http://172.16.23.137/appB/    
+      url: http://cawjpazlb/appB/    
