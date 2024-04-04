@@ -23,7 +23,7 @@
 # 
 
 - name: Shut down paz zone 
-  ansible.builtin.import_playbook: shutdown/paz.yml
+  ansible.builtin.import_playbook: stop-env/paz.yml
 
 #
 # Step 3 -
@@ -33,7 +33,7 @@
 #
 
 - name: Shut down Linux applications in the apps zone 
-  ansible.builtin.import_playbook: "shutdown/apps.yml"
+  ansible.builtin.import_playbook: "stop-env/apps.yml"
 
 
 #
