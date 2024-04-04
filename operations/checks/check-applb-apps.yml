@@ -11,11 +11,11 @@
   
   - name: APPS LB ==> App A Servers
     ansible.builtin.uri:
-      url: http://{{ ansible_hostname }}:8080/
-    when: "'appA' in group_names"
+      url: http://{{ item }}:8080/
+    loop: "{{ groups['appA'] }}"
 
   - name: APPS LB ==> App B Servers
     ansible.builtin.uri:
-      url: http://{{ ansible_hostname }}:8080/
-    when: "'appB' in group_names"
+      url: http://{{ item }}:8080/
+    loop: "{{ groups['appB'] }}"
 
