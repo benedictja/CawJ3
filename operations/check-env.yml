@@ -1,0 +1,14 @@
+---
+# file: operations/check-env.yml
+# 
+# This playbook performs a number of status checks on the environment
+#
+
+#
+#  Server Ping
+#
+# Do an "ansible ping" to all servers, to makes sure they are reachable
+#
+
+- name: "Do ansible 'ping' to test connectivity"
+  ansible.builtin.import_playbook: checks/ping.yml
