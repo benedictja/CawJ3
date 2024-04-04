@@ -12,9 +12,9 @@
 
   tasks:
   
-  - name: Proxy-to-AppA
+  - name: App Alive - App A
     ansible.builtin.uri:
-      url: http://cawjapplb/appA/
+      url: http://cawjpazlb/appA/
 
   - name: App Alive - App B
     ansible.builtin.uri:
