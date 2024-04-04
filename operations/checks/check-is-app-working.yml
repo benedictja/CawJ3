@@ -14,7 +14,7 @@
   
   - name: Proxy-to-AppA
     ansible.builtin.uri:
-      url: http://cawapplb/appA/
+      url: http://cawjapplb/appA/
 
   - name: App Alive - App B
     ansible.builtin.uri:
