@@ -19,7 +19,7 @@
       url: http://cawjpazlb/appB/ 
     when: "'cawjpazlb' in group_names"
 
-  - names: Check PAZLB ==> Proxy
+  - name: Check PAZLB ==> Proxy
     ansible.builtin.uri:
-      url: http://{{ansible_hostname}}/ 
+      url: http://{{ ansible_hostname }}/
     when: "'webservers' in group_names"
