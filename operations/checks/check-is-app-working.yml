@@ -9,7 +9,6 @@
 
 - name:  "Check#2 - URL Connectivity"
   hosts: cawjhub 
-  gather_facts: false
 
   tasks:
   
