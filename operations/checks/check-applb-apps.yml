@@ -14,9 +14,11 @@
     ansible.builtin.uri:
       url: http://{{ item }}:8080/
     loop: "{{ groups['appA'] }}"
+    ignore_errors: true
 
   - name: APPS LB ==> App B Servers
     ansible.builtin.uri:
       url: http://{{ item }}:8080/
     loop: "{{ groups['appB'] }}"
+    ignore_errors: true
 

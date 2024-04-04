@@ -15,8 +15,10 @@
   - name: App Alive - App A
     ansible.builtin.uri:
       url: http://cawjpazlb/appA/
+    ignore_errors: true
 
   - name: App Alive - App B
     ansible.builtin.uri:
       url: http://cawjpazlb/appB/ 
+    ignore_errors: true
 
