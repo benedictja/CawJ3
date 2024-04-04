@@ -9,11 +9,17 @@
 
   tasks:
 
-  - name: Check connection to App A
+  - name: Check PAZLB ==> AppA
     ansible.builtin.uri:
       url: http://cawjpazlb/appA/
     when: "'cawjpazlb' in group_names"
 
-  - name: Check connection to App B
+  - name: Check PAZLB ==> AppB
     ansible.builtin.uri:
-      url: http://cawjpazlb/appB/    
+      url: http://cawjpazlb/appB/ 
+    when: "'cawjpazlb' in group_names"
+
+  - names: Check PAZLB ==> Proxy
+    ansible.builtin.uri:
+      url: http://{{ansible_hostname}}/ 
+    when: "'webservers' in group_names"
