@@ -9,13 +9,13 @@
 
   tasks:
   
-  - name: APPS LB == App A Servers
+  - name: APPS LB ==> App A Servers
     ansible.builtin.uri:
-      url: http://{{ ansible_hostname }}/
+      url: http://{{ ansible_hostname }}:8080/
     when: "'appA' in group_names"
 
-  - name: APPS LB == App B Servers
+  - name: APPS LB ==> App B Servers
     ansible.builtin.uri:
-      url: http://{{ ansible_hostname }}/
+      url: http://{{ ansible_hostname }}:8080/
     when: "'appB' in group_names"
 
