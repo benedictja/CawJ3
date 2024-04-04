@@ -1,0 +1,18 @@
+# file: ./operations/checks/check-proper-access.yml
+# 
+# Checks both http://cawjpazlb/appA/ and http://cawjpazlb/appB/
+#
+# hard-coding the MDAE Lab for now
+
+- name:  "Check#2 - Ingres URL check"
+  hosts: all 
+
+  tasks:
+
+  - name: Check connection to App A
+    ansible.builtin.uri:
+      url: http://172.16.23.137/appA/
+
+  - name: Check connection to App B
+    ansible.builtin.uri:
+      url: http://172.16.23.137/appB/    

@@ -13,10 +13,6 @@
 - name: "#1 Do ansible 'ping' to test connectivity"
   ansible.builtin.import_playbook: checks/ping.yml
 
-- name: Check that you can connect (GET) to a page and it returns a status 200
-  ansible.builtin.uri:
-    url: http://172.16.23.137/appA/
+- name: "#1 Do ansible 'ping' to test connectivity"
+  ansible.builtin.import_playbook: checks/check-proper-access.yml
 
-- name: Check that you can connect (GET) to a page and it returns a status 200
-  ansible.builtin.uri:
-    url: http://172.16.23.137/appB/
