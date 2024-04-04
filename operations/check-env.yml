@@ -26,5 +26,5 @@
   tags: connectivity
 
 - name: "#5 Check to see that the the apps lb can contact each app server"
-  ansible.builtin.import_playbook: checks/check-appslb-apps.yml
+  ansible.builtin.import_playbook: checks/check-applb-apps.yml
   tags: connectivity
