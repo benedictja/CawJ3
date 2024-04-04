@@ -9,12 +9,13 @@
 
 - name:  "Check#2 - URL Connectivity"
   hosts: cawjhub 
+  gather_facts: false
 
   tasks:
   
-  - name: App Alive - App A
+  - name: Proxy-to-AppA
     ansible.builtin.uri:
-      url: http://cawjpazlb/appA/
+      url: http://cawapplb/appA/
 
   - name: App Alive - App B
     ansible.builtin.uri:
