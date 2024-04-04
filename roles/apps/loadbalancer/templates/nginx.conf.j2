@@ -30,7 +30,7 @@ http {
     }
 
      upstream backendsB {
-        {% for server in lb_target_listB %}
+        {% for server in groups['appB'] %}
         server {{ server }}:{{ lb_target_portB }};
         {% endfor %}
     }
