@@ -12,5 +12,5 @@
   - name: PAZ LB to proxy
     ansible.builtin.uri:
       url: http://cawjpazlb/appA/
-    loop: "{{ groups[webservers] }}" 
+    loop: "{{ groups['webservers'] }}" 
 
