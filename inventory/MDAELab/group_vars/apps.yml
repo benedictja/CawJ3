@@ -2,21 +2,36 @@
 #
 # specify variables for template
 #
-lb_backend_nameA: backendsA
-lb_backend_nameB: backendsB
 
-# port http is running on
-#
-lb_target_portA: 8080
-lb_target_portB: 8080
+lb_backends:
+  - name: backendsA
+    server_group: appA
+    target_port: 8080
+    listen_port: 80
+    listen_location: /appA/
+    target_url: "http://backendsA/"
+  - name: backendsB
+    server_group: appB
+    target_port: 8080
+    listen_port: 80
+    listen_locations: /appB/
+    target_url: "http://backendsB/"
 
-# list of proxy hosts to balance
+# lb_backend_nameA: backendsA
+# lb_backend_nameB: backendsB
 
-lb_zone: apps
+# # port http is running on
+# #
+# lb_target_portA: 8080
+# lb_target_portB: 8080
+
+# # list of proxy hosts to balance
+
+# lb_zone: apps
 
 lb_listen_port: 80
-lb_listen_locationA: /appA/
-lb_listen_locationB: /appB/
-#lb_proxy_target: "http://backends/{{ lb_listen_location }}"
-lb_proxy_targetA: "http://backendsA/"
-lb_proxy_targetB: "http://backendsB/"
+# lb_listen_locationA: /appA/
+# lb_listen_locationB: /appB/
+# #lb_proxy_target: "http://backends/{{ lb_listen_location }}"
+# lb_proxy_targetA: "http://backendsA/"
+# lb_proxy_targetB: "http://backendsB/"
