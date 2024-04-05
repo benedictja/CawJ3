@@ -4,7 +4,7 @@
 #
 
 - name:  Calls a task/role to to install NGINX
-  hosts: cawjpazlb
+  hosts: cawjappslb
   become: true
   roles: 
   - role: ../roles/paz/loadbalancer
