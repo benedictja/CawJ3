@@ -23,17 +23,15 @@ events {
  
 http {
 
-    upstream backendsA {
-        {% for server in groups['appA'] %}
-        server {{ server }}:{{ lb_target_portA }};
-        {% endfor %}
+{% for item in lb_backends.values() %}
+    upstream {{item.name}} {
+{% for server in groups['appservers'] %}
+{% if item.server_group in server %}
+        server {{ server }}:{{ item.target_port }}; 
+{% endif %}
+{% endfor %}
     }
-
-     upstream backendsB {
-        {% for server in groups['appB'] %}
-        server {{ server }}:{{ lb_target_portB }};
-        {% endfor %}
-    }
+{% endfor %}
 
 
     log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
@@ -60,23 +58,16 @@ http {
         listen       [::]:{{ lb_listen_port }};
         server_name  _;
         root         /usr/share/nginx/html;
-
-        location {{ lb_listen_locationA }} {
-            proxy_pass {{ lb_proxy_targetA}};
+    {% for items in lb_backends.values() %}
+        location {{ items.listen_location }} {
+            proxy_pass {{ items.target_url}};
             if (-f $document_root/under-maintenance.html)
             {
                 return 503;
 
             }
         }
-        location {{ lb_listen_locationB }} {
-            proxy_pass {{ lb_proxy_targetB}};
-            if (-f $document_root/under-maintenance.html)
-            {
-                return 503;
-
-            }
-        }
+    {% endfor %}
 
         # Load configuration files for the default server block.
         include /etc/nginx/default.d/*.conf;
