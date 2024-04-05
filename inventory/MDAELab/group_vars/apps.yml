@@ -6,7 +6,7 @@
 lb_backends:
   1:
     name: backendsA
-    server_group: appA
+    server_group: {{groups['appA']}}
     target_port: 8080
     listen_port: 80
     listen_location: /appA/
