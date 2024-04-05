@@ -8,6 +8,14 @@
   hosts: cawjhub
 
   tasks:
-  - name: Check that you can connect (GET) to a page and it returns a status 200
+  - name: "http://cawjpazlb:80/appA/"
     ansible.builtin.uri:
-      url: "http://{{cawjpazlb}}/"
+      url: "http://cawjpazlb:80/"
+  
+  - name: "http://cawjpazlb:80/appA/"
+    ansible.builtin.uri:
+      url: "http://cawjpazlb:80/appA/"
+
+  - name: "http://cawjpazlb:80/appB/"
+    ansible.builtin.uri:
+      url: "http://cawjpazlb:80/appB/"
