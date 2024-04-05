@@ -7,6 +7,7 @@
 - name:  "Check#1 - PAZ LB"
   hosts: cawjhub
 
-- name: Check that you can connect (GET) to a page and it returns a status 200
-  ansible.builtin.uri:
-    url: http://172.16.23.137/
+  tasks:
+  - name: Check that you can connect (GET) to a page and it returns a status 200
+    ansible.builtin.uri:
+      url: http://172.16.23.137/
