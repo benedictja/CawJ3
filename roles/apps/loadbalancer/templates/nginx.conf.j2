@@ -25,7 +25,7 @@ http {
 
 {% for item in lb_backends.values() %}
     upstream {{item.name}} {
-        {% for server in groups['{{item.server_group}}'] %}
+        {% for server in groups['appA'] %}
         server {{ server }}:{{ item.target_port }}; {{item.server_group}}
         {% endfor %}
     }
