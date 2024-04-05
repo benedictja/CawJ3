@@ -7,7 +7,7 @@
   hosts: cawjappslb
   become: true
   roles: 
-  - role: ../roles/paz/loadbalancer
+  - role: ../roles/apps/loadbalancer
     
 
  
