@@ -27,7 +27,7 @@ lb_backends:
 
 # # list of proxy hosts to balance
 
-# lb_zone: apps
+lb_zone: apps
 
 lb_listen_port: 80
 # lb_listen_locationA: /appA/
