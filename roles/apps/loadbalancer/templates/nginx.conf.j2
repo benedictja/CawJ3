@@ -24,8 +24,8 @@ events {
 http {
 
 {% for items in lb_backends.values() %}
-    upstream {{item.value.name}} {
-        {% for server in groups['{{item.value.group_name}}'] %}
+    upstream {{items.value.name}} {
+        {% for server in groups['{{items.value.group_name}}'] %}
         server {{ server }}:{{ item.value.target_port }};
         {% endfor %}
     }
@@ -57,8 +57,8 @@ http {
         server_name  _;
         root         /usr/share/nginx/html;
     {% for items in lb_backends.values() %}
-        location {{ lb_listen_locationA }} {
-            proxy_pass {{ lb_proxy_targetA}};
+        location {{ items.value.listen_location }} {
+            proxy_pass {{ items.value.target_url}};
             if (-f $document_root/under-maintenance.html)
             {
                 return 503;
@@ -66,14 +66,6 @@ http {
             }
         }
     {% endfor %}
-        location {{ lb_listen_locationB }} {
-            proxy_pass {{ lb_proxy_targetB}};
-            if (-f $document_root/under-maintenance.html)
-            {
-                return 503;
-
-            }
-        }
 
         # Load configuration files for the default server block.
         include /etc/nginx/default.d/*.conf;
