@@ -16,7 +16,7 @@ lb_backends:
     server_group: appB
     target_port: 8080
     listen_port: 80
-    listen_locations: /appB/
+    listen_location: /appB/
     target_url: "http://backendsB/"
 
 # lb_backend_nameA: backendsA
