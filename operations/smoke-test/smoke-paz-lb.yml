@@ -4,11 +4,11 @@
 # This playbook check the paz lb ...
 #
 
-- name:  "Check#1 - PAZ LB"
+- name:  "Check#2 - PAZ LB"
   hosts: cawjhub
 
   tasks:
-  - name: "http://cawjpazlb:80/appA/"
+  - name: "http://cawjpazlb:80/"
     ansible.builtin.uri:
       url: "http://cawjpazlb:80/"
   

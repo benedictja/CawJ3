@@ -21,3 +21,6 @@
 
 - name: "#2 Do url check on paz lb"
   ansible.builtin.import_playbook: smoke-test/smoke-paz-lb.yml
+
+- name: "#2 Do url check on apps lb"
+  ansible.builtin.import_playbook: smoke-test/smoke-apps-lb.yml
