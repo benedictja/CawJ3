@@ -24,9 +24,9 @@ events {
 http {
 
 {% for item in lb_backends.values() %}
-    upstream {{item.value.name}} {
-        {% for server in groups['{{items.value.group_name}}'] %}
-        server {{ server }}:{{ item.value.target_port }};
+    upstream {{item.name}} {
+        {% for server in groups['{{item.group_name}}'] %}
+        server {{ server }}:{{ item.target_port }};
         {% endfor %}
     }
 {% endfor %}
@@ -57,8 +57,8 @@ http {
         server_name  _;
         root         /usr/share/nginx/html;
     {% for items in lb_backends.values() %}
-        location {{ items.value.listen_location }} {
-            proxy_pass {{ items.value.target_url}};
+        location {{ items.listen_location }} {
+            proxy_pass {{ items.target_url}};
             if (-f $document_root/under-maintenance.html)
             {
                 return 503;
