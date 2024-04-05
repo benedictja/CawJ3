@@ -13,3 +13,11 @@
 - name: "#1 Do ansible 'ping' to test connectivity"
   ansible.builtin.import_playbook: smoke-test/ping-all-servers.yml
 
+#
+# URL check based on
+# - name: Check that you can connect (GET) to a page and it returns a status 200
+#   ansible.builtin.uri:
+#     url: http://www.example.com
+
+- name: "#2 Do url check on paz lb"
+  ansible.builtin.import_playbook: smoke-test/smoke-paz-lb.yml
