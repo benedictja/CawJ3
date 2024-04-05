@@ -4,13 +4,15 @@
 #
 
 lb_backends:
-  - name: backendsA
+  1:
+    name: backendsA
     server_group: appA
     target_port: 8080
     listen_port: 80
     listen_location: /appA/
     target_url: "http://backendsA/"
-  - name: backendsB
+  2:
+    name: backendsB
     server_group: appB
     target_port: 8080
     listen_port: 80

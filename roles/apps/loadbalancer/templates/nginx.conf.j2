@@ -23,8 +23,8 @@ events {
  
 http {
 
-{% for items in lb_backends.values() %}
-    upstream {{items.value.name}} {
+{% for item in lb_backends.values() %}
+    upstream {{item.value.name}} {
         {% for server in groups['{{items.value.group_name}}'] %}
         server {{ server }}:{{ item.value.target_port }};
         {% endfor %}
