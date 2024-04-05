@@ -55,6 +55,9 @@
 # Smoke Test
 #
 
+- name: Smoke Testt
+  ansible.builtin.import_playbook: ./smoke-test.yml
+
 #
 # Step 6 -
 #
