@@ -6,3 +6,8 @@
 project_name: CawJ3
 project_desc: "Code along with James #3 pre-prod"
 current_environment: "MDAELab"
+
+#
+# SSL 
+#
+cert_repository: /tmp/cawj3/certs
