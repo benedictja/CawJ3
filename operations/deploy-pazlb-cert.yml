@@ -9,7 +9,7 @@
   become: yes 
 
   vars:
-    - vars: local_cert_repo: /etc/pki/ngnix
+    - local_cert_repo: /etc/pki/ngnix
     - pazcert_name: cawjpazlb
 
   tasks:
