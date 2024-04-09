@@ -40,7 +40,7 @@
   
   - name: Copy private key
     ansible.builtin.copy:
-      src: "{{cert_repository}}/provate/{{pazcert_name}}.key"
+      src: "{{cert_repository}}/private/{{pazcert_name}}.key"
       dest: "{{local_cert_repo}}/server/private/{{pazcert_name}}.key"
       owner: root
       group: root
