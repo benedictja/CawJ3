@@ -34,10 +34,10 @@
 
   - name: Create private key (RSA, 4096 bits)
     community.crypto.openssl_privatekey:
-      path: "{{cert_repository}}/private/{{cawjpazlb}}.key"
+      path: "{{cert_repository}}/private/{{pazcert_name}}.key"
   
   - name: Create simple self-signed certificate
     community.crypto.x509_certificate:
-      path: "{{cert_repository}}/public/{{cawjpazlb}}.pem"
-      privatekey_path: "{{cert_repository}}/private/{{cawjpazlb}}.key"
+      path: "{{cert_repository}}/public/{{pazcert_name}}.pem"
+      privatekey_path: "{{cert_repository}}/private/{{pazcert_name}}.key"
       provider: selfsigned
