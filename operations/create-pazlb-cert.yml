@@ -8,6 +8,9 @@
   hosts: cawjhub
   become: yes 
 
+  vars:
+    - pazcert_name: cawjpazlb
+
   tasks:
 
 #
@@ -15,23 +18,26 @@
 #
   - name: Creates directory
     ansible.builtin.file:
-      path: "{{cert_repository}}"
+      path: "{{cert_repository}}/public"
+      state: directory
+      owner: root
+      group: root
+      mode: 0775
+  
+  - name: Creates directory
+    ansible.builtin.file:
+      path: "{{cert_repository}}/private"
       state: directory
       owner: root
       group: root
       mode: 0775
 
-  # - name: Ensure private key is present
-  #   community.crypto.openssl_privatekey:
-  #     path: /etc/stunnel/redis-server.key
-  #     size: 2048
-  #     mode: "0600"
-  #     type: RSA
-    
-  # - name: Ensure self-signed cert is present
-  #   community.crypto.x509_certificate:
-  #     path: /etc/stunnel/redis-server.crt
-  #     privatekey_path: /etc/stunnel/redis-server.key
-  #     provider: selfsigned
-  #     selfsigned_not_after: "+3650d" # this is the default
-  #     mode: "0644"
+  - name: Create private key (RSA, 4096 bits)
+    community.crypto.openssl_privatekey:
+      path: "{{cert_repository}}/private/{{cawjpazlb}}.key"
+  
+  - name: Create simple self-signed certificate
+    community.crypto.x509_certificate:
+      path: "{{cert_repository}}/public/{{cawjpazlb}}.pem"
+      privatekey_path: "{{cert_repository}}/private/{{cawjpazlb}}.key"
+      provider: selfsigned
