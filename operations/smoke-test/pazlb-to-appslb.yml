@@ -1,23 +1,23 @@
-# file: ./operations/checks/check-pazlb-proxy.yml
-# 
+# file: ./operations/smoke-test/pazlb-to-appslb.yml
+#
 #
 # Does url checks for connectivity from the pazlb to all of the proxy servers
-# 
+#
 
-- name:  "Check#X - PAZ LB ==> Proxy"
+- name:  "Check#3 - PAZ LB ==> Proxy"
   hosts: cawjpazlb # we only want to check LB->Proxy
   gather_facts: false
 
   tasks:
-  
+
   - name: PAZ LB to proxy
     ansible.builtin.uri:
       url: http://cawjpazlb/appA/
-    loop: "{{ groups['webservers'] }}" 
+    loop: "{{ groups['webservers'] }}"
     ignore_errors: true
 
   - name: PAZ LB to proxy
     ansible.builtin.uri:
       url: http://cawjpazlb/appB/
     loop: "{{ groups['webservers'] }}"
-    ignore_errors: true 
+    ignore_errors: true

@@ -1,18 +1,18 @@
-# file: ./operations/checks/check-is-app-working.yml
-# 
+# file: ./operations/smoke-test/client-to-pazlb.yml
+#
 #
 # Does url checks for connectivity from our "external" point (cawjhub)
 # to the published application.
-# 
+#
 # This indicates that both applications should be working (e.g. an end user browser gets a page)
 # but it does NOT tell us how many servers are actually working
 
-- name:  "Check#2 - URL Connectivity"
-  hosts: cawjhub 
+- name:  "Check#2 - URL Connectivity (client to PAZ lb)"
+  hosts: cawjhub # client
   gather_facts: false
 
   tasks:
-  
+
   - name: App Alive - App A
     ansible.builtin.uri:
       url: http://cawjpazlb/appA/
@@ -20,6 +20,5 @@
 
   - name: App Alive - App B
     ansible.builtin.uri:
-      url: http://cawjpazlb/appB/ 
+      url: http://cawjpazlb/appB/
     ignore_errors: true
-
