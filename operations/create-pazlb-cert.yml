@@ -20,16 +20,16 @@
     ansible.builtin.file:
       path: "{{cert_repository}}/public"
       state: directory
-      owner: root
-      group: root
+      owner: ansiblead
+      group: ansiblead
       mode: 0775
   
   - name: Creates directory
     ansible.builtin.file:
       path: "{{cert_repository}}/private"
       state: directory
-      owner: root
-      group: root
+      owner: ansiblead
+      group: ansiblead
       mode: 0775
 
   - name: Create private key (RSA, 4096 bits)
