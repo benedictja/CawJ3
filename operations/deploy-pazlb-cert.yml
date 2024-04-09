@@ -38,11 +38,11 @@
       group: root
       mode: '0644'
   
-  - name: Copy private key
-    ansible.builtin.copy:
-      src: "{{cert_repository}}/private/{{pazcert_name}}.key"
-      # dest: "{{local_cert_repo}}/server/private/{{pazcert_name}}.key"
-      dest: /tmp/test.key
-      owner: root
-      group: root
-      mode: '0644'
+  # - name: Copy private key
+  #   ansible.builtin.copy:
+  #     src: "{{cert_repository}}/private/{{pazcert_name}}.key"
+  #     # dest: "{{local_cert_repo}}/server/private/{{pazcert_name}}.key"
+  #     dest: /tmp/test.key
+  #     owner: root
+  #     group: root
+  #     mode: '0644'
