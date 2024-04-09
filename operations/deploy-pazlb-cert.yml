@@ -6,7 +6,7 @@
 
 - name: Deploy PAZ certificate
   hosts: cawjpazlb
-  become: yes 
+  become: root 
 
   vars:
     - local_cert_repo: /etc/pki/ngnix
