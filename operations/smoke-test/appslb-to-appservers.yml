@@ -4,7 +4,7 @@
 # Does url checks for connectivity from the appslb to all of the proxy servers
 #
 
-- name:  "Check#X - PAZ LB ==> Proxy"
+- name:  "Check#5 - PAZ LB ==> Proxy"
   hosts:  cawjappslb # we only want to check LB->Proxy
   gather_facts: false
 

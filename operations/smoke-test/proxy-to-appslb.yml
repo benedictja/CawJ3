@@ -5,7 +5,7 @@
 #
 # We also recheck to make sure each proxy can reach each app
 
-- name:  "Check#X - Proxy to APPS"
+- name:  "Check#4 - Proxy to APPS"
   hosts: webservers # we only want to check LB->Proxy
   gather_facts: false
 
