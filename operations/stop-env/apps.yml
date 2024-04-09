@@ -1,0 +1,11 @@
+---
+# file: shutdown/apps-Red-Hat.yml
+#
+# Shuts down all the Linux services in the APPS Zone
+# 
+
+- name: Stop all  APPS Services
+  hosts: apps
+
+  tasks:
+    - include_tasks: "apps-{{ ansible_os_family }}.yml"

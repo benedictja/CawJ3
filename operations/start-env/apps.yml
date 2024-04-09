@@ -1,0 +1,11 @@
+---
+# file: startup/apps.yml
+#
+# Start up all apps and services in the APPS zone
+# 
+
+- name: Start all  APPS Services
+  hosts: apps
+
+  tasks:
+    - include_tasks: "apps-{{ ansible_os_family }}.yml"

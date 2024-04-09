@@ -1,0 +1,65 @@
+---
+# file: start_env.yml
+# 
+# This playnook ensures that the environment is started.
+# It will check to see if a component is running, and star it ONLY if required.
+#
+
+# - name:  Start Environment
+
+#
+# Step 1 -
+#
+# Execute all common tasks
+#
+# - name: Start common tasks
+#   ansible.builtin.import_playbook: startup/common.yml
+#
+# We currently have no common tasks that need to be started.
+
+#
+# Step 2 -
+#
+# Execute all ops tasks
+#
+
+# - name: Import Operations Zone
+#   ansible.builtin.import_playbook: startup/ops.yml
+
+
+#
+# Step 3 -
+#
+# Execute all apps tasks
+#
+
+- name: Import apps zone 
+  ansible.builtin.import_playbook: start-env/apps.yml
+
+#
+# Step 4 -
+#
+# Startup all applications and services in the PAZ
+#
+
+- name: Start PAZ Zone
+  ansible.builtin.import_playbook: start-env/paz.yml
+
+#
+# By now, env should be fully started
+#
+
+#
+# Step 5 -
+#
+# Smoke Test
+#
+
+- name: Smoke Testt
+  ansible.builtin.import_playbook: ./smoke-test.yml
+
+#
+# Step 6 -
+#
+# Remove maintenance pages/go live
+#

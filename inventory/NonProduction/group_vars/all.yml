@@ -1,8 +1,0 @@
-# file: inventories/preprod/group_vars/cawjappservers.yml
-#
-# This file contains variables that apply to the PREPROD Tomcat server group
-#
-
-project_name: CawJ3
-project_desc: "Code along with James #3"
-current_environment: "NonProduction"

@@ -1,7 +1,7 @@
 ---
 # vars file for push-host-map
 host_ips:
-  - 172.16.23.135   cawjdesk
+  - 172.16.23.155   cawjdesk
   - 172.16.23.137   cawjpazlb
   - 172.16.23.138   cawjpazproxy1
   - 172.16.23.139   cawjpazproxy2
@@ -15,3 +15,7 @@ host_ips:
   - 172.16.23.148   gcmsmel1
   - 172.16.23.149   gcmswin1
   - 172.16.23.152   cawjhub
+  - 172.16.23.156   cawjappsA3
+  - 172.16.23.157   cawjappsA4
+  - 172.16.23.158   cawjappsA5
+  

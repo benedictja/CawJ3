@@ -1,0 +1,28 @@
+---
+# file: startup/apps-Red-Hat.yml
+#
+# Shuts down all the Linux services in the APPS Zone
+# 
+- name: Populate service facts
+  ansible.builtin.service_facts:
+
+# - name: Print service facts
+#   ansible.builtin.debug:
+#     var: ansible_facts.services
+#
+#
+# Start servics from the most inside-out
+#
+- name: Start APPS Load Balancer (nginx)
+  become: true
+  systemd:
+    name: nginx
+    state: started
+  when: "'nginx.service' in services"
+
+- name: Start Web Application Server (apache tomcat)
+  become: true
+  systemd:
+    name: tomcat
+    state: started    
+  when: "'tomcat.service' in services"

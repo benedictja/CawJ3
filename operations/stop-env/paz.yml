@@ -1,0 +1,53 @@
+---
+# file: paz.yml
+#
+# Shuts down all the services in the PAZ
+# 
+# TODO: split this because it won't work as-is.
+
+- name: Stop all PAZ Services
+  hosts: paz
+
+  tasks:
+
+  - name: Populate service facts
+    ansible.builtin.service_facts:
+
+#   - name: Print service facts
+#     ansible.builtin.debug:
+#       var: ansible_facts.services
+# #
+# Stop services from the most outside-in
+#
+  - name: Stop Load Balancer Service (nginx)
+    become: true
+    systemd:
+      name: nginx
+      state: stopped
+    when: "'nginx.service' in services"
+
+  - name: Stop Web Proxy Service (apache httpd)
+    become: true
+    systemd:
+      name: httpd
+      state: stopped
+    when: "'httpd.service' in services"
+
+  # #
+  # # Shutdown the load balancer
+  # #
+  # - name: Stop PAZ Load Balancer (nginx)
+  #   become: yes
+  #   ansible.builtin.service:
+  #     name: nginx
+  #     state: stopped
+
+  # #
+  # # Shut down the proxy servers
+  # #
+  # - name: Stop PAZ Proxy Services (apache)
+  #   become: yes
+  #   ansible.builtin.service:
+  #     name: httpd
+  #     state: stopped
+
