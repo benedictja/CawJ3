@@ -15,7 +15,7 @@
 #
   - name: Creates directory
     ansible.builtin.file:
-      path: "{{cert_repository}}""
+      path: "{{cert_repository}}"
       state: directory
       owner: root
       group: root
