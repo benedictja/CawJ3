@@ -1,0 +1,23 @@
+# file: ./operations/smoke-test/proxy-to-appslb
+#
+#
+# Does url checks for connectivity from each proxy to the apps lb
+#
+# We also recheck to make sure each proxy can reach each app
+
+- name:  "Check#X - Proxy to APPS"
+  hosts: webservers # we only want to check LB->Proxy
+  gather_facts: false
+
+
+  tasks:
+
+  - name: Proxies to App A
+    ansible.builtin.uri:
+      url: http://cawjappslb/appA/
+    ignore_errors: true
+
+  - name: Proxies to App B
+    ansible.builtin.uri:
+      url: http://cawjappslb/appA/
+    ignore_errors: true

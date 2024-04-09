@@ -1,6 +1,6 @@
 ---
 # file: operations/smoke-test.yml
-# 
+#
 # This playbook performs a number of status checks on the environment
 #
 
@@ -13,14 +13,18 @@
 - name: "#1 Do ansible 'ping' to test connectivity"
   ansible.builtin.import_playbook: smoke-test/ping-all-servers.yml
 
-#
-# URL check based on
-# - name: Check that you can connect (GET) to a page and it returns a status 200
-#   ansible.builtin.uri:
-#     url: http://www.example.com
+- name: "#2 Check to see that the app(s) are reachable via http"
+  ansible.builtin.import_playbook: smoke-test/client-to-pazlb.yml
+  tags: connectivity
 
-- name: "#2 Do url check on paz lb"
-  ansible.builtin.import_playbook: smoke-test/smoke-paz-lb.yml
+- name: "#3 Check to see that the paz lb can contact each proxy"
+  ansible.builtin.import_playbook: smoke-test/pazlb-to-appslb.yml
+  tags: connectivity
 
-- name: "#2 Do url check on apps lb"
-  ansible.builtin.import_playbook: smoke-test/smoke-apps-lb.yml
+- name: "#4 Check to see that the each proxy can reach each app"
+  ansible.builtin.import_playbook: smoke-test/proxy-to-appslb.yml
+  tags: connectivity
+
+- name: "#5 Check to see that the the apps lb can contact each app server"
+  ansible.builtin.import_playbook: smoke-test/appslb-to-appservers.yml
+  tags: connectivity
