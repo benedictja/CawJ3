@@ -28,11 +28,11 @@
     changed_when: false
     register: service_apache_status
 
-# - name: Report status of Apache
-#   fail:
-#     msg: |
-#       Service apache2 is not running.
-#       Output of `systemctl status httpd`:
-#       {{ service_apache_status.stdout }}
-#       {{ service_apache_status.stderr }}
-#   when: service_apache_status | failed
+- name: Report status of Apache
+  fail:
+    msg: |
+      Service apache2 is not running.
+      Output of `systemctl status httpd`:
+      {{ service_apache_status.stdout }}
+      {{ service_apache_status.stderr }}
+  when: service_apache_status | failed
