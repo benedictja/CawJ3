@@ -30,6 +30,7 @@
     ansible.builtin.uri:
       url: https://cawjpazlb/appA/
     ignore_errors: true
+    validate_certs: false
 
   - name: App Alive (https) - App B
     ansible.builtin.uri:
