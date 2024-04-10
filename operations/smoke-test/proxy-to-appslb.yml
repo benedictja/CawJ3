@@ -21,3 +21,18 @@
     ansible.builtin.uri:
       url: http://cawjappslb/appA/
     ignore_errors: true
+
+  - name: Check if Apache is running
+    command: systemctl status apache2
+    ignore_errors: yes
+    changed_when: false
+    register: service_apache_status
+
+# - name: Report status of Apache
+#   fail:
+#     msg: |
+#       Service apache2 is not running.
+#       Output of `systemctl status httpd`:
+#       {{ service_apache_status.stdout }}
+#       {{ service_apache_status.stderr }}
+#   when: service_apache_status | failed
