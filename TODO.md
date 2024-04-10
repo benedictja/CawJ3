@@ -7,3 +7,8 @@ Add https to project
 4. repoint proxies to https://appslb
 5. add ssl to apps servers
 6. repoint apps lb to https
+
+
+1 - Smoke Test - checkmark
+2 - Push Certs and config
+3 - Deploy Wars

@@ -35,6 +35,7 @@
 
 - name: Import apps zone 
   ansible.builtin.import_playbook: start-env/apps.yml
+  tags: apps
 
 #
 # Step 4 -
@@ -44,6 +45,7 @@
 
 - name: Start PAZ Zone
   ansible.builtin.import_playbook: start-env/paz.yml
+  tags: paz
 
 #
 # By now, env should be fully started
