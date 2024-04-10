@@ -29,11 +29,12 @@
   - name: App Alive (https) - App A
     ansible.builtin.uri:
       url: https://cawjpazlb/appA/
-      validate_certs: false
+      validate_certs: false # necessary because we're using a self-signed cert
     ignore_errors: true
     
 
   - name: App Alive (https) - App B
     ansible.builtin.uri:
       url: https://cawjpazlb/appB/
+      validate_certs: false # necessary because we're using a self-signed cert
     ignore_errors: true
