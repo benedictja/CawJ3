@@ -22,7 +22,7 @@
       url: http://cawjappslb/appA/
     ignore_errors: true
 
-  - name: Check if Apache is running
+  - name: Check if Apache (httpd) is running
     command: systemctl status httpd
     ignore_errors: yes
     changed_when: false

@@ -12,19 +12,20 @@
 
 - name: "#1 Do ansible 'ping' to test connectivity"
   ansible.builtin.import_playbook: smoke-test/ping-all-servers.yml
+  tags: ping, check-1
 
 - name: "#2 Check to see that the app(s) are reachable via http"
   ansible.builtin.import_playbook: smoke-test/client-to-pazlb.yml
-  tags: connectivity
+  tags: connectivity, service-up, check-2
 
 - name: "#3 Check to see that the paz lb can contact each proxy"
   ansible.builtin.import_playbook: smoke-test/pazlb-to-appslb.yml
-  tags: connectivity
+  tags: connectivity, proxy-up, check-3
 
 - name: "#4 Check to see that the each proxy can reach each app"
   ansible.builtin.import_playbook: smoke-test/proxy-to-appslb.yml
-  tags: connectivity
+  tags: connectivity, apps-up, check-4
 
 - name: "#5 Check to see that the the apps lb can contact each app server"
   ansible.builtin.import_playbook: smoke-test/appslb-to-appservers.yml
-  tags: connectivity
+  tags: connectivity, appservers-up, check-5
