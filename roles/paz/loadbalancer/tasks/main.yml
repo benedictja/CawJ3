@@ -32,6 +32,15 @@
     permanent: true
   tags: open firewall
 
+- name: open firewall
+  become: yes
+  ansible.posix.firewalld:
+    service: https
+    state: enabled
+    immediate: true
+    permanent: true
+  tags: open firewall
+
 - name: nginx is running and enabled
   become: yes
   service:
