@@ -83,8 +83,8 @@ http {
         server_name  _;
         root         /usr/share/nginx/html;
 
-        ssl_certificate "{{local_cert_repo}}/server/private/{{pazcert_name}}.key";
-        ssl_certificate_key "{{local_cert_repo}}/server/{{pazcert_name}}.pem";
+        ssl_certificate_key "{{local_cert_repo}}/server/private/{{pazcert_name}}.key";
+        ssl_certificate "{{local_cert_repo}}/server/{{pazcert_name}}.pem";
         ssl_session_cache shared:SSL:1m;
         ssl_session_timeout  10m;
         ssl_ciphers PROFILE=SYSTEM;
