@@ -22,3 +22,16 @@
     ansible.builtin.uri:
       url: http://cawjpazlb/appB/
     ignore_errors: true
+
+  #
+  # Add tasks for https
+  #
+  - name: App Alive (https) - App A
+    ansible.builtin.uri:
+      url: https://cawjpazlb/appA/
+    ignore_errors: true
+
+  - name: App Alive (https) - App B
+    ansible.builtin.uri:
+      url: https://cawjpazlb/appB/
+    ignore_errors: true
