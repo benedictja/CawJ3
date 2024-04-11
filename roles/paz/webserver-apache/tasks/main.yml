@@ -16,6 +16,14 @@
     name: httpd
     state: latest  
 
+#
+# we also expect mod_ssl to be installed and up-to-date
+#
+- name: mod_ssl installed
+  ansible.builtin.dnf:
+    name: mod_ssl
+    state: latest
+
 
 #
 # create index file using copy
