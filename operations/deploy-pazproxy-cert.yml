@@ -4,42 +4,27 @@
 # This playbook wil generate a self-siged cert for the pazlb
 #
 
-- name: Deploy PAZ certificate
-  hosts: cawjpazlb
+- name: Deploy PAZ Proxy certificate
+  hosts: webservers
   become: true  
 
-
+  vars:
+    local_cert_repo: /etc/pki/tls
 
   tasks:
 
-  - name: Creates directory
-    ansible.builtin.file:
-      path: "{{local_cert_repo}}/server"
-      state: directory
-      owner: root
-      group: root
-      mode: 0775
-  
-  - name: Creates directory
-    ansible.builtin.file:
-      path: "{{local_cert_repo}}/server/private"
-      state: directory
-      owner: root
-      group: root
-      mode: 0775
-
   - name: Copy public cert
     ansible.builtin.copy:
-      src: "{{cert_repository}}/public/{{pazcert_name}}.pem"
-      dest: "{{local_cert_repo}}/server/{{pazcert_name}}.pem"
+      src: "{{cert_repository}}/public/{{apache_ssl_cert_name}}.pem"
+      dest: "{{local_cert_repo}}/certs/{{apache_ssl_cert_name}}.pem"
       owner: root
       group: root
       mode: '0644'
   
   - name: Copy private key
     ansible.builtin.copy:
-      src: "{{cert_repository}}/private/{{pazcert_name}}.key"
-      dest: "{{local_cert_repo}}/server/private/{{pazcert_name}}.key"
+      src: "{{cert_repository}}/private/{{apache_ssl_cert_name}}.key"
+      dest: "{{local_cert_repo}}/private/{{apache_ssl_cert_name}}.key"
       owner: root
       group: root
       mode: '0644'
