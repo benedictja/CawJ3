@@ -39,6 +39,17 @@
     group: root
     mode: '0644'  
 
+#
+# copy ssl.conf
+#
+- name: ssl.conf deploy
+  become: yes # TODO: shouldn't need root, recode privs
+  ansible.builtin.template:
+    src: templates/ssl.conf.j2
+    dest: /etc/httpd/conf.d/ssl.conf
+    owner: root
+    group: root
+    mode: '0644'
 
 #
 # Update selinux so that httpd can forward requests
@@ -65,6 +76,17 @@
   become: yes
   ansible.posix.firewalld:
     service: http
+    state: enabled
+    immediate: true
+    permanent: true
+
+#
+# make sure the firewall is open
+#
+- name: open firewall
+  become: yes
+  ansible.posix.firewalld:
+    service: https
     state: enabled
     immediate: true
     permanent: true

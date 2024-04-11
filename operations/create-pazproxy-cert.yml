@@ -1,0 +1,40 @@
+---
+# file: operations/create-pazlb-cert.yml
+#
+# This playbook wil generate a self-siged cert for the pazlb
+#
+
+- name: Create PAZ Proxy Self-Sigend Cert
+  hosts: cawjhub
+  become: yes 
+
+  tasks:
+
+#
+# Create local directory for cert storage
+#
+  - name: Creates directory
+    ansible.builtin.file:
+      path: "{{cert_repository}}/public"
+      state: directory
+      owner: ansiblead
+      group: ansiblead
+      mode: 0775
+  
+  - name: Creates directory
+    ansible.builtin.file:
+      path: "{{cert_repository}}/private"
+      state: directory
+      owner: ansiblead
+      group: ansiblead
+      mode: 0775
+
+  - name: Create private key (RSA, 4096 bits)
+    community.crypto.openssl_privatekey:
+      path: "{{cert_repository}}/private/{{apache_ssl_cert_name}}.key"
+  
+  - name: Create simple self-signed certificate
+    community.crypto.x509_certificate:
+      path: "{{cert_repository}}/public/{{apache_ssl_cert_name}}.pem"
+      privatekey_path: "{{cert_repository}}/private/{{apache_ssl_cert_name}}.key"
+      provider: selfsigned

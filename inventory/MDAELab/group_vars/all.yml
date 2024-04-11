@@ -13,3 +13,4 @@ current_environment: "MDAELab"
 cert_repository: /tmp/cawj3/certs
 local_cert_repo: /etc/pki/ngnix
 pazcert_name: cawjpazlb
+apache_ssl_cert_name: cawjpazproxy
