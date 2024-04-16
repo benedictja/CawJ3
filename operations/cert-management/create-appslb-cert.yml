@@ -8,9 +8,6 @@
   hosts: cawjhub
   become: yes 
 
-  vars:
-    - pazcert_name: cawjpazlb
-
   tasks:
 
 #
