@@ -30,6 +30,10 @@
       state: directory
       mode: '755'
   
+  - name: Generate an OpenSSL private key with the default values (4096 bits, RSA)
+    community.crypto.openssl_privatekey:
+      path: "{{cert_repository}}/private/{{pazcert_name}}.key"
+
   - name: Generate a Self Signed OpenSSL certificate
     community.crypto.x509_certificate:
       path: "{{cert_repository}}/public/{{pazcert_name}}.pem"
