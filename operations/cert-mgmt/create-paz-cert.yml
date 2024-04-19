@@ -1,0 +1,24 @@
+---
+# file: ./operations/cert-mgmt/create-paz-cert
+# 
+# This playbook creates the self-signed paz cert
+#
+
+- name:  Create PAZ Cert
+  hosts: cawjhub
+
+  tasks:
+  #
+  # we will declare our directory structure
+  #
+  - name: Create a directory if it does not exist
+    ansible.builtin.file:
+      path: {{cert_repository}}
+      state: directory
+      mode: '0755'
+  
+  - name: Generate a Self Signed OpenSSL certificate
+    community.crypto.x509_certificate:
+      path: "{{cert_repository}}/public/{{pazcert_name}}.pem"
+      privatekey_path: "{{cert_repository}}/private/{{pazcert_name}}.key"
+      provider: selfsigned
