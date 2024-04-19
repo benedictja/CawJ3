@@ -13,9 +13,15 @@
   #
   - name: Create a directory if it does not exist
     ansible.builtin.file:
+      path: "{{file_location}}/"
+      state: directory
+      mode: '755'
+
+  - name: Create a directory if it does not exist
+    ansible.builtin.file:
       path: "{{cert_repository}}/"
       state: directory
-      mode: '0755'
+      mode: '755'
   
   - name: Generate a Self Signed OpenSSL certificate
     community.crypto.x509_certificate:
