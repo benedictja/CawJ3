@@ -31,5 +31,7 @@ PAZ Cert Management
     - write/run/test our deployer
     - can we write some validations
         - before we deploy?
+            cert/key alignment
         - after?
+            smoke test?
     
