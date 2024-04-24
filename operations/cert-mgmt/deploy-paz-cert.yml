@@ -9,6 +9,7 @@
 #
 
 - name: Deploy PAZ cert to ingress (load balancer)
+  become: yes
   hosts: ingress
 
   tasks:
