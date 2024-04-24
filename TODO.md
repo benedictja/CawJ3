@@ -25,5 +25,11 @@ PAZ Cert Management
     April 19, 2024
      continue with wednesday's agenda
      - add tasks to make sure the directory is created
-     - run/test our deployer
-     - can we write some validations
+  
+
+    April 24, 2024
+    - write/run/test our deployer
+    - can we write some validations
+        - before we deploy?
+        - after?
+    

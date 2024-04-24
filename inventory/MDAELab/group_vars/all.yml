@@ -10,7 +10,7 @@ current_environment: "MDAELab"
 #
 # SSL 
 #
-file_location: /tmp/cawj3
+
 cert_repository: "{{file_location}}/certs"
 local_cert_repo: /etc/pki/ngnix
 pazcert_name: cawjpazlb
