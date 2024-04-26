@@ -28,10 +28,15 @@ PAZ Cert Management
   
 
     April 24, 2024
-    - write/run/test our deployer
+    - write/run/test our deployer - done
     - can we write some validations
         - before we deploy?
             cert/key alignment
         - after?
             smoke test?
     
+    April 26, 2024
+    - fun with certs
+        - continue testing
+        - recode create-cert to do a dn
+        - what else?

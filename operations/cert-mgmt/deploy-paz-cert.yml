@@ -5,7 +5,7 @@
 # Assumptions
 # - key doesn't have passphrase
 # - we aren't changing the file name/path
-# - we are only keeping one backup (maybe add date)
+# - we are only keeping one backup (maybe add date) - ?? 
 #
 
 - name: Deploy PAZ cert to ingress (load balancer)
