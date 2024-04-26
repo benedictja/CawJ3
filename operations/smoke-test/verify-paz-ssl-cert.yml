@@ -3,7 +3,9 @@
 #
 # Checks a https cert for validity and how much time left until expiry
 #
-# Should come after check#2
+# Assumptions
+# - Should come after check#2
+# - assumes URLs are all correct & working (check 2)
 
 - name: Check Expiration Date and Renew if Less than 30days
   hosts: cawjhub
@@ -13,7 +15,10 @@
     - cawjpazlb
 
   tasks:
+
+  # TODO: should code this task to not show "changed" if possible
   - name: Get x509 TLS Certificate Informations
+    # shell commands "break" idempotence, and should be written as modules.
     shell: >
       echo |  openssl s_client -connect {{ item }}:443 2>/dev/null | openssl x509 -noout -dates
     register: openssl_output
