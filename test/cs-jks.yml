@@ -38,6 +38,7 @@
       path: "{{cert_path}}/{{key_name}}.pem"
       csr_path: "{{cert_path}}/{{key_name}}.csr"
       privatekey_path: "{{cert_path}}/{{key_name}}.key"
+      privatekey_passphrase: ansible
       provider: selfsigned
 
   # - name: Create Self-Signed Certificate
