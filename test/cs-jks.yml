@@ -53,7 +53,7 @@
     community.general.java_keystore:
       name: example
       certificate_path: "{{cert_path}}/{{key_name}}.pem"
-      privatekey_path: "{{cert_path}}/{{key_name}}.key"
+      privatekey: "{{cert_path}}/{{key_name}}.key"
       privatekey_passphrase: ansible
       keystore_type: jks
       password: changeit
