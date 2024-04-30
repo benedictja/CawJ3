@@ -19,6 +19,7 @@
     ansible.builtin.dnf:
       name: java-11-openjdk-headless
       state: installed
+
   - name: Generate an OpenSSL Private key
     community.crypto.openssl_privatekey:
       path: "{{cert_path}}/{{key_name}}.key"
@@ -40,12 +41,12 @@
       privatekey_passphrase: ansible
       provider: selfsigned
 
-  - name: Create a Java Key Store using Certificate
-    community.general.java_keystore:
-      name: example
-      certificate_path: "{{cert_path}}/{{key_name}}.pem"
-      privatekey_path: "{{cert_path}}/{{key_name}}.key"
-      privatekey_passphrase: ansible
-      keystore_type: jks
-      password: changeit
-      dest: "{{cert_path}}/keystore.jks"
+  # - name: Create a Java Key Store using Certificate
+  #   community.general.java_keystore:
+  #     name: example
+  #     certificate_path: "{{cert_path}}/{{key_name}}.pem"
+  #     privatekey_path: "{{cert_path}}/{{key_name}}.key"
+  #     privatekey_passphrase: ansible
+  #     keystore_type: jks
+  #     password: changeit
+  #     dest: "{{cert_path}}/keystore.jks"
