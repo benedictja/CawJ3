@@ -1,0 +1,30 @@
+# file: ./operations/smoke-test/verify-paz-ssl-cert-2
+#
+#
+# Checks a https cert for validity and how much time left until expiry
+#
+# Assumptions
+# - Should come after check#2
+# - assumes URLs are all correct & working (check 2)
+
+- name: Check Expiration Date and Renew if Less than 30days
+  hosts: cawjhub
+  gather_facts: no
+  vars:
+    website_to_check: cawjpazlb
+
+  tasks:
+
+  - name: Get a cert from an https port
+    community.crypto.get_certificate:
+      host: "{{website_to_check}}"
+      port: 443
+    delegate_to: localhost
+    run_once: true
+    register: cert
+
+  - name: How many days until cert expires
+    ansible.builtin.debug:
+      msg: "cert expires in: {{ expire_days }} days."
+    vars:
+      expire_days: "{{ (( cert.not_after | to_datetime('%Y%m%d%H%M%SZ')) - (ansible_date_time.iso8601 | to_datetime('%Y-%m-%dT%H:%M:%SZ')) ).days }}"

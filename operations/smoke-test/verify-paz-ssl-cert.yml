@@ -1,0 +1,45 @@
+# file: ./operations/smoke-test/verify-paz-ssl-cert
+#
+#
+# Checks a https cert for validity and how much time left until expiry
+#
+# Assumptions
+# - Should come after check#2
+# - assumes URLs are all correct & working (check 2)
+
+- name: Check Expiration Date and Renew if Less than 30days
+  hosts: cawjhub
+  gather_facts: no
+  vars:
+    websites_to_check:
+    - cawjpazlb
+
+  tasks:
+
+  # TODO: should code this task to not show "changed" if possible
+  - name: Get x509 TLS Certificate Informations
+    # shell commands "break" idempotence, and should be written as modules.
+    shell: >
+      echo |  openssl s_client -connect {{ item }}:443 2>/dev/null | openssl x509 -noout -dates
+    register: openssl_output
+    ignore_errors: yes
+    with_items: "{{ websites_to_check }}"
+
+  - name: Extract notAfter Expiry Date
+    set_fact:
+      expiration_date: "{{ expiration_date | default([]) + [item.stdout_lines[1] | regex_replace('notAfter=', '')]  }}"
+    with_items: "{{ openssl_output.results }}"
+    loop_control:
+      loop_var: item
+
+  - name: Calculate days before Cert expires
+    set_fact:
+      days_before_expiry: "{{ days_before_expiry | default([]) + [(item | to_datetime('%b %d %H:%M:%S %Y GMT') - now()).days] }}"
+    with_items: "{{ expiration_date }}"
+
+  - name: Loop Print back Days for each site
+    debug:
+      msg: "{{item.0}}days left to {{item.1}}"
+    with_together:
+    - "{{days_before_expiry}}"
+    - "{{websites_to_check}}"

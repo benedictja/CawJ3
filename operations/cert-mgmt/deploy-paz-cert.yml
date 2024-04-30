@@ -1,0 +1,65 @@
+# file: ./operations/cert-mgmt/deploy-paz-cert
+# 
+# This playbook deploys the self-signed paz cert
+#
+# Assumptions
+# - key doesn't have passphrase
+# - we aren't changing the file name/path
+# - we are only keeping one backup (maybe add date) - ?? 
+#
+
+- name: Deploy PAZ cert to ingress (load balancer)
+  become: yes
+  hosts: ingress
+
+  tasks:
+  # 
+  # declare the existence of the target directory and let ansible decide to create or not
+  #
+  - name: Create a directory tree if it does not exist
+    ansible.builtin.file:
+      path: "{{local_cert_repo}}/server/private/"
+      state: directory
+      mode: '755'
+
+  #
+  # backup existing certs    
+  #
+  # - name: Copy a private key to a backup
+  #   ansible.builtin.copy:
+  #     src: "{{local_cert_repo}}/server/private/{{pazcert_name}}.key"
+  #     dest: "{{local_cert_repo}}/server/private/{{pazcert_name}}.key-bak"
+  #     remote_src: yes
+
+  # - name: Copy a public cert to a backup
+  #   ansible.builtin.copy:
+  #     src: "{{local_cert_repo}}/server/{{pazcert_name}}.pem"
+  #     dest: "{{local_cert_repo}}/server/{{pazcert_name}}.pem-bak"
+  #     remote_src: yes
+
+  # copy file over
+
+  - name: Copy a new private key, backing up the old if its different
+    ansible.builtin.copy:
+      src: "{{cert_repository}}/private/{{pazcert_name}}.key"
+      dest: "{{local_cert_repo}}/server/private/{{pazcert_name}}.key"
+      owner: root
+      group: root
+      mode: '0644'
+      backup: yes
+
+  - name: Copy a new public key, backing up the old if its different
+    ansible.builtin.copy:
+      src: "{{cert_repository}}/public/{{pazcert_name}}.pem"
+      dest: "{{local_cert_repo}}/server/{{pazcert_name}}.pem"
+      owner: root
+      group: root
+      mode: '0644'
+      backup: yes
+
+
+# restart service (stop/start)
+
+# smoke test
+# not do in here, but add to general smoke test
+

@@ -1,4 +1,3 @@
----
 # file: operations/smoke-test.yml
 #
 # This playbook performs a number of status checks on the environment
@@ -16,7 +15,11 @@
 
 - name: "#2 Check to see that the app(s) are reachable via http"
   ansible.builtin.import_playbook: smoke-test/client-to-pazlb.yml
-  tags: connectivity, service-up, check-2
+  tags: connectivity, service-up, check-2, ssl-check
+
+- name: "#2a Check validity of https cert"
+  ansible.builtin.import_playbook: smoke-test/verify-paz-ssl-cert.yml
+  tags: connectivity, service-up, check-2, ssl-check
 
 - name: "#3 Check to see that the paz lb can contact each proxy"
   ansible.builtin.import_playbook: smoke-test/pazlb-to-appslb.yml
