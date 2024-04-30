@@ -33,20 +33,20 @@
       privatekey_passphrase: ansible
       common_name: www.example.com
 
-  - name: Create Self-Signed Certificate
-    community.crypto.x509_certifcate:
-      path: "{{cert_path}}/{{key_name}}.pem"
-      csr_path: "{{cert_path}}/{{key_name}}.csr"
-      privatekey_path: "{{cert_path}}/{{key_name}}.key"
-      privatekey_passphrase: ansible
-      provider: selfsigned
-
-  # - name: Create a Java Key Store using Certificate
-  #   community.general.java_keystore:
-  #     name: example
-  #     certificate_path: "{{cert_path}}/{{key_name}}.pem"
+  # - name: Create Self-Signed Certificate
+  #   community.crypto.x509_certifcate:
+  #     path: "{{cert_path}}/{{key_name}}.pem"
+  #     csr_path: "{{cert_path}}/{{key_name}}.csr"
   #     privatekey_path: "{{cert_path}}/{{key_name}}.key"
   #     privatekey_passphrase: ansible
-  #     keystore_type: jks
-  #     password: changeit
-  #     dest: "{{cert_path}}/keystore.jks"
+  #     provider: selfsigned
+
+  - name: Create a Java Key Store using Certificate
+    community.general.java_keystore:
+      name: example
+      certificate_path: "{{cert_path}}/{{key_name}}.pem"
+      privatekey_path: "{{cert_path}}/{{key_name}}.key"
+      privatekey_passphrase: ansible
+      keystore_type: jks
+      password: changeit
+      dest: "{{cert_path}}/keystore.jks"
