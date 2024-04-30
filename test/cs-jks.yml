@@ -2,38 +2,50 @@
   hosts: localhost
   become: true
 
+  vars:
+    cert_path: /tmp/cawjcerts/cs_test
+    key_name: cs_test
+
   tasks:
+  - name: Creates directory
+    ansible.builtin.file:
+      path: "{{cert_path}}"
+      state: directory
+      owner: ansiblead
+      group: ansiblead
+      mode: 0775
+
   - name: Ensure JDK and Keytool is installed
     ansible.builtin.dnf:
       name: java-11-openjdk-headless
       state: installed
   - name: Generate an OpenSSL Private key
     community.crypto.openssl_privatekey:
-      path: /home/student/test/certs/certificate.key
+      path: "{{cert_path}}/{{key_name}}.key"
       passphrase: ansible
       cipher: auto
 
   - name: Generate an OpenSSL Certificate Signing Request
     community.crypto.openssl_csr:
-      path: /home/student/test/certs/certificate.csr
-      privatekey_path: /home/student/test/certs/certificate.key
+      path: "{{cert_path}}/{{key_name}}.csr"
+      privatekey_path: "{{cert_path}}/{{key_name}}.key"
       privatekey_passphrase: ansible
       common_name: www.example.com
 
   - name: Create Self-Signed Certificate
     community.crypto.x509_certifcate:
-      path: /home/student/test/certs/certificate.pem
-      csr_path: /home/student/test/certs/certificate.csr
-      privatekey_path: /home/student/test/certs/certificate.key
+      path: "{{cert_path}}/{{key_name}}.pem"
+      csr_path: "{{cert_path}}/{{key_name}}.csr"
+      privatekey_path: "{{cert_path}}/{{key_name}}.key"
       privatekey_passphrase: ansible
       provider: selfsigned
 
   - name: Create a Java Key Store using Certificate
     community.general.java_keystore:
       name: example
-      certificate_path: /home/student/test/certs/certificate.pem
-      privatekey_path: /home/student/test/certs/certificate.key
+      certificate_path: "{{cert_path}}/{{key_name}}.pem"
+      privatekey_path: "{{cert_path}}/{{key_name}}.key"
       privatekey_passphrase: ansible
       keystore_type: jks
       password: changeit
-      dest: /home/student/test/keystore.jks
+      dest: "{{cert_path}}/keystore.jks"
