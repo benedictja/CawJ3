@@ -38,7 +38,7 @@
     community.crypto.openssl_csr:
       path: "{{cert_repository}}/public/{{pazcert_name}}.csr"
       privatekey_path: "{{cert_repository}}/private/{{pazcert_name}}.key"
-      common_name: www.ansible.com
+      common_name: "{{pazcert_common_name}}"
 
   - name: Generate a Self Signed OpenSSL certificate
     community.crypto.x509_certificate:

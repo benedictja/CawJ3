@@ -43,8 +43,9 @@ PAZ Cert Management
 
     May 1, 2024 Happy May Day!
     
-    1) Create a new certificate and push it
+    1) Create a new certificate and push it - done
+        b) changed cert content
     2) Create a second new certificate with a different name
-        - push it 
+        - push it
         - identify and update configs that need to be changed
         - run site play to make sure configs get pushed 
