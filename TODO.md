@@ -40,3 +40,11 @@ PAZ Cert Management
         - continue testing
         - recode create-cert to do a dn
         - what else?
+
+    May 1, 2024 Happy May Day!
+    
+    1) Create a new certificate and push it
+    2) Create a second new certificate with a different name
+        - push it 
+        - identify and update configs that need to be changed
+        - run site play to make sure configs get pushed 

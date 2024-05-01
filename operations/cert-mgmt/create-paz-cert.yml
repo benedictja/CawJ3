@@ -1,10 +1,9 @@
----
 # file: ./operations/cert-mgmt/create-paz-cert
 # 
 # This playbook creates the self-signed paz cert
 #
 
-- name:  Create PAZ Cert
+- name: Create PAZ Cert
   hosts: cawjhub
 
   tasks:
@@ -29,13 +28,22 @@
       path: "{{cert_repository}}/private/"
       state: directory
       mode: '755'
-  
+
   - name: Generate an OpenSSL private key with the default values (4096 bits, RSA)
     community.crypto.openssl_privatekey:
       path: "{{cert_repository}}/private/{{pazcert_name}}.key"
+      force: true
+
+  - name: Generate an OpenSSL Certificate Signing Request
+    community.crypto.openssl_csr:
+      path: "{{cert_repository}}/private/{{pazcert_name}}.csr"
+      privatekey_path: "{{cert_repository}}/private/{{pazcert_name}}.key"
+      common_name: www.ansible.com
 
   - name: Generate a Self Signed OpenSSL certificate
     community.crypto.x509_certificate:
       path: "{{cert_repository}}/public/{{pazcert_name}}.pem"
       privatekey_path: "{{cert_repository}}/private/{{pazcert_name}}.key"
+      csr_path: "{{cert_repository}}/private/{{pazcert_name}}.csr"
       provider: selfsigned
+
