@@ -46,6 +46,17 @@ PAZ Cert Management
     1) Create a new certificate and push it - done
         b) changed cert content
     2) Create a second new certificate with a different name
-        - push it
-        - identify and update configs that need to be changed
-        - run site play to make sure configs get pushed 
+        - push it - done
+        - identify and update configs that need to be changed - done
+        - run site play to make sure configs get pushed - done
+
+
+    May 3, 2024 FriYAY! 
+    - any thoughts on "CawJ TNG"?
+    - merge back in to main
+    - any other cert checks
+    - play
+
+    May 10, 2024 Happy Mother's Day
+    - talk about next steps
+    - 
